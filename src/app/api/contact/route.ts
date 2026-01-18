@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-
-export const runtime = 'edge'
+import nodemailer from 'nodemailer'
 
 interface ContactFormData {
   name: string
@@ -32,101 +31,53 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Option 1: Send via Resend (recommended for Vercel)
-    if (process.env.RESEND_API_KEY) {
-      const resendResponse = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-        },
-        body: JSON.stringify({
-          from: process.env.EMAIL_FROM || 'contact@aureoncare.com',
-          to: process.env.EMAIL_TO || 'info@aureoncare.tech',
-          reply_to: body.email,
-          subject: `AureonCare Contact Form: ${body.subject}`,
-          html: `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${body.name}</p>
-            <p><strong>Email:</strong> ${body.email}</p>
-            ${body.phone ? `<p><strong>Phone:</strong> ${body.phone}</p>` : ''}
-            ${body.organization ? `<p><strong>Organization:</strong> ${body.organization}</p>` : ''}
-            <p><strong>Subject:</strong> ${body.subject}</p>
-            <p><strong>Message:</strong></p>
-            <p>${body.message.replace(/\n/g, '<br>')}</p>
-          `,
-        }),
-      })
+    // Create transporter using Gmail SMTP
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    })
 
-      if (!resendResponse.ok) {
-        const error = await resendResponse.text()
-        console.error('Resend API error:', error)
-        throw new Error('Failed to send email via Resend')
-      }
+    // Email content
+    const emailHtml = `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${body.name}</p>
+      <p><strong>Email:</strong> ${body.email}</p>
+      ${body.phone ? `<p><strong>Phone:</strong> ${body.phone}</p>` : ''}
+      ${body.organization ? `<p><strong>Organization:</strong> ${body.organization}</p>` : ''}
+      <p><strong>Subject:</strong> ${body.subject}</p>
+      <p><strong>Message:</strong></p>
+      <p>${body.message.replace(/\n/g, '<br>')}</p>
+    `
 
-      return NextResponse.json({
-        success: true,
-        message: 'Your message has been sent successfully!'
-      })
-    }
+    // Send email
+    await transporter.sendMail({
+      from: `"AureonCare Contact Form" <${process.env.SMTP_USER}>`,
+      to: process.env.EMAIL_TO || 'info@aureoncare.tech',
+      replyTo: body.email,
+      subject: `AureonCare Contact Form: ${body.subject}`,
+      html: emailHtml,
+      text: `
+New Contact Form Submission
 
-    // Option 2: Send via SendGrid
-    if (process.env.SENDGRID_API_KEY) {
-      const sendgridResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
-        },
-        body: JSON.stringify({
-          personalizations: [
-            {
-              to: [{ email: process.env.EMAIL_TO || 'info@aureoncare.tech' }],
-              subject: `AureonCare Contact Form: ${body.subject}`,
-            },
-          ],
-          from: {
-            email: process.env.EMAIL_FROM || 'contact@aureoncare.com',
-            name: 'AureonCare Website',
-          },
-          reply_to: { email: body.email, name: body.name },
-          content: [
-            {
-              type: 'text/html',
-              value: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${body.name}</p>
-                <p><strong>Email:</strong> ${body.email}</p>
-                ${body.phone ? `<p><strong>Phone:</strong> ${body.phone}</p>` : ''}
-                ${body.organization ? `<p><strong>Organization:</strong> ${body.organization}</p>` : ''}
-                <p><strong>Subject:</strong> ${body.subject}</p>
-                <p><strong>Message:</strong></p>
-                <p>${body.message.replace(/\n/g, '<br>')}</p>
-              `,
-            },
-          ],
-        }),
-      })
+Name: ${body.name}
+Email: ${body.email}
+${body.phone ? `Phone: ${body.phone}` : ''}
+${body.organization ? `Organization: ${body.organization}` : ''}
+Subject: ${body.subject}
 
-      if (!sendgridResponse.ok) {
-        const error = await sendgridResponse.text()
-        console.error('SendGrid API error:', error)
-        throw new Error('Failed to send email via SendGrid')
-      }
-
-      return NextResponse.json({
-        success: true,
-        message: 'Your message has been sent successfully!'
-      })
-    }
-
-    // Fallback: Log to console (for testing without email service)
-    console.log('Contact form submission:', body)
+Message:
+${body.message}
+      `.trim(),
+    })
 
     return NextResponse.json({
       success: true,
-      message: 'Form submitted successfully (email service not configured)',
-      warning: 'Email service not configured. Add RESEND_API_KEY or SENDGRID_API_KEY to environment variables.',
+      message: 'Your message has been sent successfully!'
     })
 
   } catch (error) {

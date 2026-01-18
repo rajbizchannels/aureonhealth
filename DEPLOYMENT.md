@@ -111,16 +111,22 @@ npm start
 
 ## Environment Variables
 
-If you need to add environment variables (e.g., for contact form backend):
+Contact form requires Gmail SMTP credentials:
 
-1. Create `.env.local` file:
+1. `.env.local` file (already created):
 ```
-NEXT_PUBLIC_API_URL=https://api.yourbackend.com
-CONTACT_FORM_EMAIL=info@aureoncare.tech
+# Gmail SMTP Configuration
+SMTP_USER=rajbizchannels@gmail.com
+SMTP_PASS=*Smbz786#
+EMAIL_TO=info@aureoncare.tech
 ```
 
-2. Add to `.gitignore` (already included)
-3. Add to your hosting platform's environment variables
+2. For Vercel deployment, add these to Environment Variables in project settings:
+   - `SMTP_USER` = rajbizchannels@gmail.com
+   - `SMTP_PASS` = *Smbz786# (or App Password if 2FA enabled)
+   - `EMAIL_TO` = info@aureoncare.tech
+
+3. `.env.local` is already in `.gitignore` and won't be committed
 
 ## Post-Deployment Checklist
 
