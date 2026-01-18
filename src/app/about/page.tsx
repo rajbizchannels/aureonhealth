@@ -7,7 +7,7 @@ export default function About() {
       <section className="bg-gradient-to-br from-aureon-amber to-aureon-ocean py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-            About Aureon Health
+            About AureonCare
           </h1>
           <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto drop-shadow">
             Pioneering the future of healthcare through innovation, dedication, and excellence
@@ -22,7 +22,7 @@ export default function About() {
             <h2 className="text-4xl font-bold mb-8 text-gradient-aureon">Our Story</h2>
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
               <p>
-                Aureon Health was founded with a singular vision: to transform the healthcare
+                AureonCare was founded with a singular vision: to transform the healthcare
                 landscape through innovative technology and compassionate care. We recognized
                 that healthcare providers needed better tools to deliver exceptional patient
                 care while managing the complexities of modern medical practice.
@@ -34,7 +34,7 @@ export default function About() {
                 of daily clinical practice, and we knew we could do better.
               </p>
               <p>
-                Today, Aureon Health stands at the forefront of healthcare innovation,
+                Today, AureonCare stands at the forefront of healthcare innovation,
                 providing comprehensive solutions that empower healthcare providers, improve
                 patient outcomes, and streamline operations. Our commitment to excellence and
                 innovation drives everything we do.
@@ -156,7 +156,7 @@ export default function About() {
             Ready to Learn More?
           </h2>
           <p className="text-xl text-gray-200 mb-8">
-            Discover how Aureon Health can transform your healthcare delivery
+            Discover how AureonCare can transform your healthcare delivery
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

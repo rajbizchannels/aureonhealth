@@ -1,7 +1,7 @@
 {
-  "name": "aureon-health-website",
+  "name": "aureoncare-website",
   "version": "1.0.0",
-  "description": "Marketing and outreach website for Aureon Health",
+  "description": "Marketing and outreach website for AureonCare",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -1,14 +1,14 @@
-# Aureon Health - Marketing Website
+# AureonCare - Marketing Website
 
-A modern, responsive marketing and outreach website for Aureon Health, showcasing our healthcare solutions and team.
+A modern, responsive marketing and outreach website for AureonCare, showcasing our healthcare solutions and team.
 
 ## Overview
 
-This website serves as the primary marketing platform for Aureon Health, featuring:
+This website serves as the primary marketing platform for AureonCare, featuring:
 
 - **Home Page**: Engaging hero section with key features and call-to-action
 - **About Us**: Company story, mission, vision, and values
-- **Product**: Comprehensive overview of the Aureon Health platform and features
+- **Product**: Comprehensive overview of the AureonCare platform and features
 - **Team**: Meet our leadership team and departments
 - **Contact**: Contact form and information for getting in touch
 
@@ -39,7 +39,7 @@ The website features a beautiful gradient color palette:
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd aureon-health-website
+cd aureoncare-website
 ```
 
 2. Install dependencies:
@@ -64,7 +64,7 @@ npm start
 ## Project Structure
 
 ```
-aureon-health-website/
+aureoncare-website/
 ├── src/
 │   ├── app/
 │   │   ├── about/          # About Us page
@@ -130,7 +130,7 @@ colors: {
 
 ## License
 
-Copyright © 2025 Aureon Health. All rights reserved.
+Copyright © 2025 AureonCare. All rights reserved.
 
 ## Support
 

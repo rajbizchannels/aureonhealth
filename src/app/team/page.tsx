@@ -102,7 +102,7 @@ export default function Team() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6 text-gradient-aureon">
-            The People Behind Aureon Health
+            The People Behind AureonCare
           </h2>
           <p className="text-xl text-gray-700 leading-relaxed">
             Our team brings together healthcare professionals, technology experts, and

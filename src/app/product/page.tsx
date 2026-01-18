@@ -67,7 +67,7 @@ export default function Product() {
       <section className="bg-gradient-to-br from-aureon-amber via-aureon-gold to-aureon-ocean py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-            Aureon Health Platform
+            AureonCare Platform
           </h1>
           <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto drop-shadow mb-8">
             A comprehensive healthcare management solution designed to streamline operations,
@@ -90,7 +90,7 @@ export default function Product() {
               Transform Your Healthcare Practice
             </h2>
             <p className="text-xl text-gray-700 leading-relaxed">
-              Aureon Health provides an all-in-one platform that integrates seamlessly into
+              AureonCare provides an all-in-one platform that integrates seamlessly into
               your workflow, helping you focus on what matters most: delivering exceptional
               patient care. Our solution combines powerful features with an intuitive
               interface, making advanced healthcare technology accessible to practices of all
@@ -131,7 +131,7 @@ export default function Product() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-16 text-gradient-aureon">
-            Why Healthcare Providers Love Aureon Health
+            Why Healthcare Providers Love AureonCare
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -175,7 +175,7 @@ export default function Product() {
             Seamless Integration
           </h2>
           <p className="text-xl text-gray-700 mb-8">
-            Aureon Health integrates with the tools you already use, including major EHR
+            AureonCare integrates with the tools you already use, including major EHR
             systems, laboratory information systems, pharmacy networks, and billing platforms.
             Our open API ensures that your data flows seamlessly across your entire healthcare
             ecosystem.
@@ -197,7 +197,7 @@ export default function Product() {
             Ready to Transform Your Practice?
           </h2>
           <p className="text-xl text-gray-200 mb-8">
-            Schedule a personalized demo and see how Aureon Health can revolutionize your
+            Schedule a personalized demo and see how AureonCare can revolutionize your
             healthcare delivery
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

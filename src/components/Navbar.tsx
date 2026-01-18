@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 
@@ -23,8 +24,15 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-3xl font-bold text-white hover:opacity-90 transition-opacity">
-              Aureon Health
+            <Image
+              src="/logos/aureoncare-shield.svg"
+              alt="AureonCare"
+              width={50}
+              height={50}
+              className="hover:opacity-90 transition-opacity"
+            />
+            <span className="ml-3 text-2xl font-bold text-white hover:opacity-90 transition-opacity">
+              AureonCare
             </span>
           </Link>
 

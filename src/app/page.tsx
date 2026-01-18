@@ -9,7 +9,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
-            Welcome to Aureon Health
+            Welcome to AureonCare
           </h1>
           <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto drop-shadow">
             Transforming Healthcare Through Innovation and Excellence
@@ -35,7 +35,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gradient-aureon">
-            Why Choose Aureon Health?
+            Why Choose AureonCare?
           </h2>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
             We combine cutting-edge technology with compassionate care to deliver

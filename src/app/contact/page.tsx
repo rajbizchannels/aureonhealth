@@ -49,7 +49,7 @@ export default function Contact() {
             Get in Touch
           </h1>
           <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto drop-shadow">
-            We&apos;re here to help. Reach out to learn more about Aureon Health or schedule
+            We&apos;re here to help. Reach out to learn more about AureonCare or schedule
             a demo
           </p>
         </div>
@@ -306,7 +306,7 @@ export default function Contact() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-gray-200 mb-8">
-            Schedule a demo today and see how Aureon Health can transform your practice
+            Schedule a demo today and see how AureonCare can transform your practice
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

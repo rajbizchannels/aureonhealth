@@ -1,4 +1,4 @@
-# Deployment Guide for Aureon Health Website
+# Deployment Guide for AureonCare Website
 
 ## Creating GitHub Repository
 
@@ -7,24 +7,24 @@ Since the code is already committed locally, follow these steps to create a GitH
 ### Option 1: Using GitHub CLI (if available)
 
 ```bash
-cd /home/user/aureon-health-website
-gh repo create aureon-health-website --public --source=. --description="Marketing and outreach website for Aureon Health" --push
+cd /home/user/aureoncare-website
+gh repo create aureoncare-website --public --source=. --description="Marketing and outreach website for AureonCare" --push
 ```
 
 ### Option 2: Manual GitHub Repository Creation
 
 1. Go to [GitHub](https://github.com) and log in
 2. Click the "+" icon in the top right and select "New repository"
-3. Name it: `aureon-health-website`
-4. Description: "Marketing and outreach website for Aureon Health - Healthcare solutions platform"
+3. Name it: `aureoncare-website`
+4. Description: "Marketing and outreach website for AureonCare - Healthcare solutions platform"
 5. Choose "Public" or "Private" as needed
 6. **Do NOT** initialize with README, .gitignore, or license (we already have these)
 7. Click "Create repository"
 
 8. Connect your local repository to GitHub:
 ```bash
-cd /home/user/aureon-health-website
-git remote add origin https://github.com/YOUR_USERNAME/aureon-health-website.git
+cd /home/user/aureoncare-website
+git remote add origin https://github.com/YOUR_USERNAME/aureoncare-website.git
 git branch -M main
 git push -u origin main
 ```
@@ -36,7 +36,7 @@ Vercel is the easiest way to deploy Next.js applications:
 1. Go to [vercel.com](https://vercel.com)
 2. Sign up or log in with your GitHub account
 3. Click "Add New Project"
-4. Import your `aureon-health-website` repository
+4. Import your `aureoncare-website` repository
 5. Configure project:
    - Framework Preset: Next.js
    - Root Directory: `./`
@@ -44,7 +44,7 @@ Vercel is the easiest way to deploy Next.js applications:
    - Output Directory: `.next` (auto-detected)
 6. Click "Deploy"
 
-Your site will be live at: `https://aureon-health-website.vercel.app`
+Your site will be live at: `https://aureoncare-website.vercel.app`
 
 ### Custom Domain (Optional)
 
@@ -56,7 +56,7 @@ Your site will be live at: `https://aureon-health-website.vercel.app`
 
 1. Go to [netlify.com](https://netlify.com)
 2. Click "Add new site" → "Import an existing project"
-3. Connect to GitHub and select `aureon-health-website`
+3. Connect to GitHub and select `aureoncare-website`
 4. Build settings:
    - Build command: `npm run build`
    - Publish directory: `.next`
@@ -84,7 +84,7 @@ Your site will be live at: `https://aureon-health-website.vercel.app`
 Before deploying, test locally:
 
 ```bash
-cd /home/user/aureon-health-website
+cd /home/user/aureoncare-website
 
 # Install dependencies
 npm install
