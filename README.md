@@ -114,6 +114,49 @@ colors: {
 - Update team members in `src/app/team/page.tsx`
 - Modify contact information in `src/app/contact/page.tsx` and `src/components/Footer.tsx`
 
+## Contact Form Setup
+
+The contact form uses Vercel Edge Functions to send emails. To enable email functionality:
+
+### 1. Choose an Email Service
+
+**Option A: Resend (Recommended)**
+- Sign up at [resend.com](https://resend.com)
+- Get your API key
+- Verify your domain or use a test email
+
+**Option B: SendGrid**
+- Sign up at [sendgrid.com](https://sendgrid.com)
+- Get your API key
+- Verify your sender email
+
+### 2. Configure Environment Variables
+
+Create a `.env.local` file:
+
+```bash
+# For Resend
+RESEND_API_KEY=re_xxxxxxxxxx
+EMAIL_FROM=contact@aureoncare.com
+EMAIL_TO=info@aureonhealth.com
+
+# OR for SendGrid
+SENDGRID_API_KEY=SG.xxxxxxxxxx
+EMAIL_FROM=contact@aureoncare.com
+EMAIL_TO=info@aureonhealth.com
+```
+
+### 3. Deploy with Environment Variables
+
+**Vercel:**
+1. Go to Project Settings → Environment Variables
+2. Add your API key and email addresses
+3. Redeploy
+
+**Local Testing:**
+- Contact form will work without email service (logs to console)
+- To test emails, add environment variables to `.env.local`
+
 ## Deployment
 
 ### Vercel (Recommended)
