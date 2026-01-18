@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
               <Image
-                src="/logos/aureoncare-shield.svg"
+                src="/logos/aureoncare-shield.png"
                 alt="AureonCare"
                 width={40}
                 height={40}

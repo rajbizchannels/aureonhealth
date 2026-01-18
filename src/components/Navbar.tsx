@@ -25,7 +25,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/logos/aureoncare-shield.svg"
+              src="/logos/aureoncare-shield.png"
               alt="AureonCare"
               width={50}
               height={50}
