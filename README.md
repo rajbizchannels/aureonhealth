@@ -138,12 +138,12 @@ Create a `.env.local` file:
 # For Resend
 RESEND_API_KEY=re_xxxxxxxxxx
 EMAIL_FROM=contact@aureoncare.com
-EMAIL_TO=info@aureonhealth.com
+EMAIL_TO=info@aureoncare.tech
 
 # OR for SendGrid
 SENDGRID_API_KEY=SG.xxxxxxxxxx
 EMAIL_FROM=contact@aureoncare.com
-EMAIL_TO=info@aureonhealth.com
+EMAIL_TO=info@aureoncare.tech
 ```
 
 ### 3. Deploy with Environment Variables
@@ -177,4 +177,4 @@ Copyright © 2025 AureonCare. All rights reserved.
 
 ## Support
 
-For questions or support, contact: info@aureonhealth.com
+For questions or support, contact: info@aureoncare.tech
