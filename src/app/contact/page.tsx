@@ -76,8 +76,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-aureon-ocean mb-1">Phone</h3>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                    <p className="text-gray-600">Toll-free: 1-800-AUREON-1</p>
+                    <p className="text-gray-600">+49 176 203 80707</p>
                   </div>
                 </div>
 
@@ -87,8 +86,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-aureon-ocean mb-1">Email</h3>
-                    <p className="text-gray-600">info@aureonhealth.com</p>
-                    <p className="text-gray-600">support@aureonhealth.com</p>
+                    <p className="text-gray-600">info@aureoncare.tech</p>
+                    <p className="text-gray-600">support@aureoncare.tech</p>
                   </div>
                 </div>
 
@@ -98,9 +97,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-aureon-ocean mb-1">Address</h3>
-                    <p className="text-gray-600">123 Healthcare Boulevard</p>
-                    <p className="text-gray-600">Suite 100</p>
-                    <p className="text-gray-600">San Francisco, CA 94105</p>
+                    {/*<p className="text-gray-600">Ostlandstr 35</p>*/}
+                    <p className="text-gray-600">97816 Lohr am Main</p>
+                    <p className="text-gray-600">Germany</p>
                   </div>
                 </div>
 
@@ -123,13 +122,13 @@ export default function Contact() {
                 <h3 className="text-lg font-semibold text-aureon-ocean mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/aureoncare"
                     className="w-10 h-10 bg-gradient-to-br from-aureon-amber to-aureon-gold rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                   >
                     <FaLinkedin className="text-white text-xl" />
                   </a>
                   <a
-                    href="#"
+                    href="https://x.com/aureoncare"
                     className="w-10 h-10 bg-gradient-to-br from-aureon-gold to-aureon-ocean rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                   >
                     <FaTwitter className="text-white text-xl" />
@@ -285,7 +284,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map Section (Placeholder) */}
+      {/* Map Section (Placeholder) 
       <section className="py-20 bg-gradient-aureon-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-12 text-gradient-aureon">
@@ -297,7 +296,7 @@ export default function Contact() {
             </p>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-aureon-ocean to-aureon-blue py-16">

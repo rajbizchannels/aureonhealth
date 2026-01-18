@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
               <Image
-                src="/logos/aureoncare-shield.png"
+                src="/logos/aureoncare-logo.png"
                 alt="AureonCare"
                 width={40}
                 height={40}
@@ -24,18 +24,18 @@ export default function Footer() {
               providers and improve patient outcomes.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-aureon-amber transition-colors">
+              {/*<a href="#" className="hover:text-aureon-amber transition-colors">
                 <FaFacebook size={24} />
-              </a>
-              <a href="#" className="hover:text-aureon-amber transition-colors">
+              </a>*/}
+              <a href="https://x.com/aureoncare" className="hover:text-aureon-amber transition-colors">
                 <FaTwitter size={24} />
               </a>
-              <a href="#" className="hover:text-aureon-amber transition-colors">
+              <a href="https://www.linkedin.com/company/aureoncare" className="hover:text-aureon-amber transition-colors">
                 <FaLinkedin size={24} />
               </a>
-              <a href="#" className="hover:text-aureon-amber transition-colors">
+              {/*<a href="#" className="hover:text-aureon-amber transition-colors">
                 <FaInstagram size={24} />
-              </a>
+              </a>*/}
             </div>
           </div>
 
@@ -70,10 +70,9 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4 text-aureon-amber">Contact</h4>
             <ul className="space-y-2 text-gray-200">
-              <li>Email: info@aureonhealth.com</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Address: 123 Healthcare Blvd</li>
-              <li>Suite 100, City, ST 12345</li>
+              <li>Email: info@aureoncare.tech</li>
+              <li>Phone: +49 176 203 80707</li>
+              <li>Address: Germany</li>
             </ul>
           </div>
         </div>

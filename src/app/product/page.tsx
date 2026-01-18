@@ -7,6 +7,9 @@ import {
   FaShieldAlt,
   FaMobileAlt,
   FaCloud,
+  FaFileInvoiceDollar,
+  FaMoneyBill,
+  FaDollarSign,
 } from 'react-icons/fa'
 
 export default function Product() {
@@ -36,6 +39,12 @@ export default function Product() {
         'Complete EHR solution with customizable templates, clinical decision support, and seamless documentation.',
     },
     {
+      icon: <FaDollarSign className="text-5xl" />,
+      title: 'Revenue Cycle Management',
+      description:
+        'Integrated Claims Management to streamline billing processes, reduce claim denials, and improve cash flow.',
+    },
+    {
       icon: <FaChartLine className="text-5xl" />,
       title: 'Analytics & Reporting',
       description:
@@ -55,9 +64,9 @@ export default function Product() {
     },
     {
       icon: <FaCloud className="text-5xl" />,
-      title: 'Cloud-Based',
+      title: 'Cloud-Based and On-Premises',
       description:
-        'Reliable cloud infrastructure with automatic backups, updates, and 99.9% uptime guarantee.',
+        'Reliable solution with automatic backups, and archiving.',
     },
   ]
 
@@ -110,7 +119,7 @@ export default function Product() {
             Everything you need to run a modern, efficient healthcare practice
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -131,7 +140,7 @@ export default function Product() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-16 text-gradient-aureon">
-            Why Healthcare Providers Love AureonCare
+            Why AureonCare
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
