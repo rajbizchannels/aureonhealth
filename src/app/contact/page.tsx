@@ -22,6 +22,8 @@ export default function Contact() {
   })
 
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -32,12 +34,42 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real application, you would send this data to your backend
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 5000)
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      setSubmitted(true)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        organization: '',
+        subject: '',
+        message: '',
+      })
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.')
+      console.error('Form submission error:', err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -152,6 +184,12 @@ export default function Contact() {
                 <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
                   Thank you! Your message has been sent successfully. We&apos;ll get back to
                   you soon.
+                </div>
+              )}
+
+              {error && (
+                <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                  {error}
                 </div>
               )}
 
@@ -275,9 +313,10 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-aureon-amber to-aureon-ocean text-white py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg"
+                  disabled={loading}
+                  className="w-full bg-gradient-to-r from-aureon-amber to-aureon-ocean text-white py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {loading ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
