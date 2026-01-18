@@ -116,46 +116,47 @@ colors: {
 
 ## Contact Form Setup
 
-The contact form uses Vercel Edge Functions to send emails. To enable email functionality:
+The contact form uses Nodemailer with Gmail SMTP to send emails.
 
-### 1. Choose an Email Service
+### 1. Gmail SMTP Setup
 
-**Option A: Resend (Recommended)**
-- Sign up at [resend.com](https://resend.com)
-- Get your API key
-- Verify your domain or use a test email
-
-**Option B: SendGrid**
-- Sign up at [sendgrid.com](https://sendgrid.com)
-- Get your API key
-- Verify your sender email
+**Important Notes:**
+- If you have 2-Factor Authentication enabled on Gmail, you MUST use an App Password
+- Generate App Password at: https://myaccount.google.com/apppasswords
+- Select "Mail" as the app and "Other" as the device
+- Use the generated 16-character password instead of your regular Gmail password
 
 ### 2. Configure Environment Variables
 
-Create a `.env.local` file:
+The `.env.local` file is already configured with Gmail SMTP credentials:
 
 ```bash
-# For Resend
-RESEND_API_KEY=re_xxxxxxxxxx
-EMAIL_FROM=contact@aureoncare.com
-EMAIL_TO=info@aureoncare.tech
+# Gmail SMTP Configuration
+SMTP_USER=rajbizchannels@gmail.com
+SMTP_PASS=*Smbz786#
 
-# OR for SendGrid
-SENDGRID_API_KEY=SG.xxxxxxxxxx
-EMAIL_FROM=contact@aureoncare.com
+# Email recipient (where contact form submissions are sent)
 EMAIL_TO=info@aureoncare.tech
 ```
+
+**Note:** If Gmail authentication fails, you may need to:
+1. Enable "Less secure app access" in Gmail settings (not recommended), OR
+2. Use an App Password (recommended if 2FA is enabled)
 
 ### 3. Deploy with Environment Variables
 
 **Vercel:**
 1. Go to Project Settings → Environment Variables
-2. Add your API key and email addresses
+2. Add the following variables:
+   - `SMTP_USER` = rajbizchannels@gmail.com
+   - `SMTP_PASS` = *Smbz786# (or your App Password)
+   - `EMAIL_TO` = info@aureoncare.tech
 3. Redeploy
 
 **Local Testing:**
-- Contact form will work without email service (logs to console)
-- To test emails, add environment variables to `.env.local`
+- Environment variables are already configured in `.env.local`
+- Run `npm install` to install nodemailer dependency
+- Test the contact form at http://localhost:3000/contact
 
 ## Deployment
 
