@@ -70,7 +70,7 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4 text-aureon-amber">Contact</h4>
             <ul className="space-y-2 text-gray-200">
-              <li>Email: info@aureonhealth.com</li>
+              <li>Email: info@aureoncare.tech</li>
               <li>Phone: (555) 123-4567</li>
               <li>Address: 123 Healthcare Blvd</li>
               <li>Suite 100, City, ST 12345</li>

@@ -119,8 +119,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-aureon-ocean mb-1">Email</h3>
-                    <p className="text-gray-600">info@aureonhealth.com</p>
-                    <p className="text-gray-600">support@aureonhealth.com</p>
+                    <p className="text-gray-600">info@aureoncare.tech</p>
+                    <p className="text-gray-600">support@aureoncare.tech</p>
                   </div>
                 </div>
 

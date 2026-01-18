@@ -49,7 +49,7 @@ Your site will be live at: `https://aureoncare-website.vercel.app`
 ### Custom Domain (Optional)
 
 1. In Vercel project settings, go to "Domains"
-2. Add your custom domain (e.g., `www.aureonhealth.com`)
+2. Add your custom domain (e.g., `www.aureoncare.tech`)
 3. Follow DNS configuration instructions
 
 ## Deploying to Netlify
@@ -116,7 +116,7 @@ If you need to add environment variables (e.g., for contact form backend):
 1. Create `.env.local` file:
 ```
 NEXT_PUBLIC_API_URL=https://api.yourbackend.com
-CONTACT_FORM_EMAIL=info@aureonhealth.com
+CONTACT_FORM_EMAIL=info@aureoncare.tech
 ```
 
 2. Add to `.gitignore` (already included)

@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           from: process.env.EMAIL_FROM || 'contact@aureoncare.com',
-          to: process.env.EMAIL_TO || 'info@aureonhealth.com',
+          to: process.env.EMAIL_TO || 'info@aureoncare.tech',
           reply_to: body.email,
           subject: `AureonCare Contact Form: ${body.subject}`,
           html: `
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify({
           personalizations: [
             {
-              to: [{ email: process.env.EMAIL_TO || 'info@aureonhealth.com' }],
+              to: [{ email: process.env.EMAIL_TO || 'info@aureoncare.tech' }],
               subject: `AureonCare Contact Form: ${body.subject}`,
             },
           ],
