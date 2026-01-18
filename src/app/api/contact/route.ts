@@ -31,14 +31,32 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Check if SMTP credentials are configured
+    const smtpUser = process.env.SMTP_USER
+    const smtpPass = process.env.SMTP_PASS
+
+    if (!smtpUser || !smtpPass) {
+      console.error('SMTP credentials missing:', {
+        hasUser: !!smtpUser,
+        hasPass: !!smtpPass,
+      })
+      return NextResponse.json(
+        {
+          error: 'Email service not configured. Please contact the administrator.',
+          details: 'SMTP credentials are missing from environment variables'
+        },
+        { status: 500 }
+      )
+    }
+
     // Create transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: smtpUser,
+        pass: smtpPass,
       },
     })
 
