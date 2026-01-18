@@ -6,7 +6,9 @@
   --aureon-gold: #F4A460;
   --aureon-amber: #FFB347;
   --aureon-blue: #1E3A8A;
+  --aureon-teal: #14B8A6;
   --aureon-ocean: #0C4A6E;
+  --aureon-white: #F9FAFB;
 }
 
 body {
@@ -25,6 +27,6 @@ body {
 
 @layer utilities {
   .text-gradient-aureon {
-    @apply bg-gradient-to-r from-aureon-amber via-aureon-gold to-aureon-ocean bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-aureon-amber via-aureon-gold to-aureon-amber bg-clip-text text-transparent;
   }
 }

@@ -19,21 +19,21 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-gradient-to-r from-aureon-amber via-aureon-gold to-aureon-ocean shadow-lg sticky top-0 z-50">
+    <nav className="bg-gradient-to-r from-aureon-white via-aureon-gold to-aureon-ocean shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/logos/aureoncare-shield.png"
+              src="/logos/aureoncare-logo.png"
               alt="AureonCare"
               width={50}
               height={50}
               className="hover:opacity-90 transition-opacity"
             />
-            <span className="ml-3 text-2xl font-bold text-white hover:opacity-90 transition-opacity">
+            <h3 className="ml-3 text-2xl font-bold text-aureon-ocean hover:opacity-90 transition-opacity">
               AureonCare
-            </span>
+            </h3>
           </Link>
 
           {/* Desktop Navigation */}
@@ -42,7 +42,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white hover:text-aureon-blue hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded-lg transition-all duration-300 font-medium"
+                className="text-aureon-blue hover:text-white hover:bg-aureon-gold hover:bg-opacity-60 px-4 py-2 rounded-lg transition-all duration-300 font-medium"
               >
                 {link.label}
               </Link>
