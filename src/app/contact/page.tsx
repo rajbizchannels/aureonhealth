@@ -166,7 +166,7 @@ export default function Contact() {
                     <FaTwitter className="text-white text-xl" />
                   </a>
                   <a
-                    href="#"
+                    href="https://www.facebook.com/aureoncare"
                     className="w-10 h-10 bg-gradient-to-br from-aureon-ocean to-aureon-blue rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                   >
                     <FaFacebook className="text-white text-xl" />
