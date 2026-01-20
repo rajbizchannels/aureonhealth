@@ -133,10 +133,10 @@ The `.env.local` file is already configured with Gmail SMTP credentials:
 ```bash
 # Gmail SMTP Configuration
 SMTP_USER=rajbizchannels@gmail.com
-SMTP_PASS=*Smbz786#
+SMTP_PASS=nwatzedyfkksfdun
 
 # Email recipient (where contact form submissions are sent)
-EMAIL_TO=info@aureoncare.tech
+EMAIL_TO=rajbizchannels@gmail.com
 ```
 
 **Note:** If Gmail authentication fails, you may need to:
@@ -149,8 +149,8 @@ EMAIL_TO=info@aureoncare.tech
 1. Go to Project Settings → Environment Variables
 2. Add the following variables:
    - `SMTP_USER` = rajbizchannels@gmail.com
-   - `SMTP_PASS` = *Smbz786# (or your App Password)
-   - `EMAIL_TO` = info@aureoncare.tech
+   - `SMTP_PASS` = nwatzedyfkksfdun
+   - `EMAIL_TO` = rajbizchannels@gmail.com
 3. Redeploy
 
 **Local Testing:**
