@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
     // Send email
     await transporter.sendMail({
       from: `"AureonCare Contact Form" <${process.env.SMTP_USER}>`,
-      to: process.env.EMAIL_TO || 'info@aureoncare.tech',
+      to: process.env.EMAIL_TO || 'rajbizchannels@gmail.com',
       replyTo: body.email,
       subject: `AureonCare Contact Form: ${body.subject}`,
       html: emailHtml,

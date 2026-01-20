@@ -117,14 +117,14 @@ Contact form requires Gmail SMTP credentials:
 ```
 # Gmail SMTP Configuration
 SMTP_USER=rajbizchannels@gmail.com
-SMTP_PASS=*Smbz786#
-EMAIL_TO=info@aureoncare.tech
+SMTP_PASS=nwatzedyfkksfdun
+EMAIL_TO=rajbizchannels@gmail.com
 ```
 
 2. For Vercel deployment, add these to Environment Variables in project settings:
    - `SMTP_USER` = rajbizchannels@gmail.com
-   - `SMTP_PASS` = *Smbz786# (or App Password if 2FA enabled)
-   - `EMAIL_TO` = info@aureoncare.tech
+   - `SMTP_PASS` = nwatzedyfkksfdun
+   - `EMAIL_TO` = rajbizchannels@gmail.com
 
 3. `.env.local` is already in `.gitignore` and won't be committed
 
