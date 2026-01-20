@@ -143,7 +143,7 @@ export default function Contact() {
                     <h3 className="text-lg font-semibold text-aureon-ocean mb-1">
                       Business Hours
                     </h3>
-                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM PST</p>
+                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM CET</p>
                     <p className="text-gray-600">Saturday - Sunday: Closed</p>
                   </div>
                 </div>
