@@ -354,7 +354,7 @@ export default function Contact() {
               Learn More
             </a>
             <a
-              href="tel:+15551234567"
+              href="tel:+4917620380707"
               className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
             >
               Call Us Now
