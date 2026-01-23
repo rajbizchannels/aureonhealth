@@ -24,9 +24,9 @@ export default function Footer() {
               providers and improve patient outcomes.
             </p>
             <div className="flex space-x-4">
-              {/*<a href="#" className="hover:text-aureon-amber transition-colors">
+              <a href="https://www.facebook.com/aureoncare" className="hover:text-aureon-amber transition-colors">
                 <FaFacebook size={24} />
-              </a>*/}
+              </a>
               <a href="https://x.com/aureoncare" className="hover:text-aureon-amber transition-colors">
                 <FaTwitter size={24} />
               </a>
