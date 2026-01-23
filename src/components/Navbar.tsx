@@ -19,7 +19,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-gradient-to-r from-aureon-white via-aureon-gold to-aureon-ocean shadow-lg sticky top-0 z-50">
+    <nav className="bg-gradient-to-r from-aureon-white via-aureon-gold to-aureon-ocean shadow-lg sticky top-0 z-50 opacity-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -64,7 +64,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-aureon-ocean bg-opacity-95 backdrop-blur-sm">
+        <div className="md:hidden bg-aureon-ocean bg-opacity-100">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navLinks.map((link) => (
               <Link
