@@ -69,16 +69,35 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-aureon-amber">Contact</h4>
-            <ul className="space-y-2 text-gray-200">
-              <li>Email: info@aureoncare.tech</li>
-              <li>Phone: +49 176 203 80707</li>
-              <li>Address: Germany</li>
+            <ul className="space-y-2 text-gray-200 text-sm">
+              <li>
+                <a href="mailto:info@aureoncare.tech" className="hover:text-aureon-amber transition-colors">
+                  info@aureoncare.tech
+                </a>
+              </li>
+              <li>
+                <a href="tel:+4917620380707" className="hover:text-aureon-amber transition-colors">
+                  +49 176 203 80707
+                </a>
+              </li>
+              <li>97816 Lohr am Main</li>
+              <li>Bavaria, Germany</li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-500 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; {new Date().getFullYear()} AureonCare. All rights reserved.</p>
+        <div className="border-t border-gray-500 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-gray-300 text-sm">
+            <p>&copy; {new Date().getFullYear()} AureonCare. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="/privacy-policy" className="hover:text-aureon-amber transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms-of-service" className="hover:text-aureon-amber transition-colors">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
