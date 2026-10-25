@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Logo from './Logo'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export default function Footer() {
@@ -9,15 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center mb-4">
-              <Image
-                src="/logos/aureoncare-logo.png"
-                alt="AureonCare"
-                width={40}
-                height={40}
-                className="mr-3"
-              />
-              <h3 className="text-2xl font-bold"><span className="text-aureon-amber">Aureon</span><span className="text-aureon-teal">Care</span></h3>
+            <div className="mb-4">
+              <Logo size={44} theme="dark" />
             </div>
             <p className="text-gray-200 mb-4">
               Transforming healthcare delivery with innovative solutions that empower
