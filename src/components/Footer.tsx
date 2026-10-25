@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export default function Footer() {
   return (
@@ -17,25 +17,28 @@ export default function Footer() {
                 height={40}
                 className="mr-3"
               />
-              <h3 className="text-2xl font-bold text-aureon-amber">AureonCare</h3>
+              <h3 className="text-2xl font-bold"><span className="text-aureon-amber">Aureon</span><span className="text-aureon-teal">Care</span></h3>
             </div>
             <p className="text-gray-200 mb-4">
               Transforming healthcare delivery with innovative solutions that empower
               providers and improve patient outcomes.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/aureoncare" className="hover:text-aureon-amber transition-colors">
+              <a href="https://www.facebook.com/aureoncare" aria-label="Facebook" className="hover:text-aureon-amber transition-colors">
                 <FaFacebook size={24} />
               </a>
-              <a href="https://x.com/aureoncare" className="hover:text-aureon-amber transition-colors">
+              <a href="https://x.com/aureoncare" aria-label="X" className="hover:text-aureon-amber transition-colors">
                 <FaTwitter size={24} />
               </a>
-              <a href="https://www.linkedin.com/company/aureoncare" className="hover:text-aureon-amber transition-colors">
+              <a href="https://www.linkedin.com/company/aureoncare" aria-label="LinkedIn" className="hover:text-aureon-amber transition-colors">
                 <FaLinkedin size={24} />
               </a>
-              {/*<a href="#" className="hover:text-aureon-amber transition-colors">
+              <a href="https://www.instagram.com/aureoncare" aria-label="Instagram" className="hover:text-aureon-amber transition-colors">
                 <FaInstagram size={24} />
-              </a>*/}
+              </a>
+              <a href="https://www.youtube.com/@aureoncare" aria-label="YouTube" className="hover:text-aureon-amber transition-colors">
+                <FaYoutube size={24} />
+              </a>
             </div>
           </div>
 
@@ -86,7 +89,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-500 mt-8 pt-8">
+        <div className="border-t border-aureon-teal/30 mt-8 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-gray-300 text-sm">
             <p>&copy; {new Date().getFullYear()} AureonCare. All rights reserved.</p>
             <div className="flex gap-6">

@@ -9,6 +9,8 @@ import {
   FaLinkedin,
   FaTwitter,
   FaFacebook,
+  FaInstagram,
+  FaYoutube,
 } from 'react-icons/fa'
 
 export default function Contact() {
@@ -155,21 +157,38 @@ export default function Contact() {
                 <div className="flex space-x-4">
                   <a
                     href="https://www.linkedin.com/company/aureoncare"
+                    aria-label="LinkedIn"
                     className="w-10 h-10 bg-gradient-to-br from-aureon-amber to-aureon-gold rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                   >
                     <FaLinkedin className="text-white text-xl" />
                   </a>
                   <a
                     href="https://x.com/aureoncare"
+                    aria-label="X"
                     className="w-10 h-10 bg-gradient-to-br from-aureon-gold to-aureon-ocean rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                   >
                     <FaTwitter className="text-white text-xl" />
                   </a>
                   <a
                     href="https://www.facebook.com/aureoncare"
+                    aria-label="Facebook"
                     className="w-10 h-10 bg-gradient-to-br from-aureon-ocean to-aureon-blue rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
                   >
                     <FaFacebook className="text-white text-xl" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/aureoncare"
+                    aria-label="Instagram"
+                    className="w-10 h-10 bg-gradient-to-br from-aureon-amber to-aureon-teal rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+                  >
+                    <FaInstagram className="text-white text-xl" />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@aureoncare"
+                    aria-label="YouTube"
+                    className="w-10 h-10 bg-gradient-to-br from-aureon-gold to-aureon-blue rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+                  >
+                    <FaYoutube className="text-white text-xl" />
                   </a>
                 </div>
               </div>
@@ -349,7 +368,7 @@ export default function Contact() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/product"
-              className="bg-aureon-amber text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
+              className="bg-aureon-amber text-aureon-blue px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
             >
               Learn More
             </a>

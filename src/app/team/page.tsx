@@ -144,7 +144,7 @@ export default function Team() {
                     <h3 className="text-xl font-bold text-aureon-ocean mb-2">
                       {member.name}
                     </h3>
-                    <p className="text-aureon-gold font-semibold mb-3">{member.role}</p>
+                    <p className="text-aureon-gold-deep font-semibold mb-3">{member.role}</p>
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
                       {member.bio}
                     </p>
@@ -153,19 +153,19 @@ export default function Team() {
                     <div className="flex justify-center space-x-4">
                       <a
                         href="#"
-                        className="text-aureon-ocean hover:text-aureon-amber transition-colors"
+                        className="text-aureon-ocean hover:text-aureon-gold-deep transition-colors"
                       >
                         <FaLinkedin size={20} />
                       </a>
                       <a
                         href="#"
-                        className="text-aureon-ocean hover:text-aureon-amber transition-colors"
+                        className="text-aureon-ocean hover:text-aureon-gold-deep transition-colors"
                       >
                         <FaTwitter size={20} />
                       </a>
                       <a
                         href="#"
-                        className="text-aureon-ocean hover:text-aureon-amber transition-colors"
+                        className="text-aureon-ocean hover:text-aureon-gold-deep transition-colors"
                       >
                         <FaEnvelope size={20} />
                       </a>
@@ -235,7 +235,7 @@ export default function Team() {
           </p>
           <a
             href="/contact"
-            className="inline-block bg-aureon-amber text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
+            className="inline-block bg-aureon-amber text-aureon-blue px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
           >
             Get in Touch
           </a>

@@ -145,7 +145,7 @@ export default function Product() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center">
-              <div className="text-5xl font-bold text-aureon-amber mb-4">50%</div>
+              <div className="text-5xl font-bold text-aureon-gold-deep mb-4">50%</div>
               <h3 className="text-2xl font-semibold mb-3 text-aureon-ocean">
                 Time Savings
               </h3>
@@ -155,7 +155,7 @@ export default function Product() {
             </div>
 
             <div className="text-center">
-              <div className="text-5xl font-bold text-aureon-gold mb-4">95%</div>
+              <div className="text-5xl font-bold text-aureon-green mb-4">95%</div>
               <h3 className="text-2xl font-semibold mb-3 text-aureon-ocean">
                 User Satisfaction
               </h3>
@@ -212,7 +212,7 @@ export default function Product() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="bg-aureon-amber text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300 shadow-lg"
+              className="bg-aureon-amber text-aureon-blue px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300 shadow-lg"
             >
               Request a Demo
             </a>

@@ -28,7 +28,7 @@ export default function TermsOfServicePage() {
         <div className="prose prose-slate max-w-none space-y-10 text-gray-700 leading-relaxed">
 
           {/* Parties */}
-          <div className="p-5 bg-amber-50 border border-aureon-amber/30 rounded-xl text-sm">
+          <div className="p-5 bg-aureon-beige border border-aureon-amber/40 rounded-xl text-sm">
             <p className="font-semibold text-aureon-blue mb-2">Important Notice</p>
             <p>
               These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you
