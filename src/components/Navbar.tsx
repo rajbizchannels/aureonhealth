@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
+import Logo from './Logo'
 import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 
@@ -23,18 +23,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logos/aureoncare-logo.png"
-              alt="AureonCare"
-              width={50}
-              height={50}
-              className="hover:opacity-90 transition-opacity"
-            />
-            <h3 className="ml-3 text-2xl font-bold hover:opacity-90 transition-opacity">
-              <span className="text-aureon-gold">Aureon</span>
-              <span className="text-aureon-teal">Care</span>
-            </h3>
+          <Link href="/" aria-label="AureonCare home" className="hover:opacity-90 transition-opacity">
+            <Logo size={55} />
           </Link>
 
           {/* Desktop Navigation */}
