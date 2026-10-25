@@ -161,7 +161,7 @@ export default function About() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/product"
-              className="bg-aureon-amber text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
+              className="bg-aureon-amber text-aureon-blue px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
             >
               Explore Our Product
             </a>

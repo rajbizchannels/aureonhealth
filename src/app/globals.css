@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --aureon-gold: #F4A460;
-  --aureon-amber: #FFB347;
-  --aureon-blue: #1E3A8A;
-  --aureon-teal: #14B8A6;
-  --aureon-ocean: #4AA5BF;
+  --aureon-amber: #FDC000;
+  --aureon-gold: #F5A800;
+  --aureon-gold-deep: #B07A00;
+  --aureon-teal: #01B4A2;
+  --aureon-ocean: #00857A;
+  --aureon-blue: #0B4F4A;
+  --aureon-green: #0E8254;
+  --aureon-beige: #FFF6DB;
   --aureon-white: #F9FAFB;
 }
 
@@ -27,6 +30,6 @@ body {
 
 @layer utilities {
   .text-gradient-aureon {
-    @apply bg-gradient-to-r from-aureon-amber via-aureon-gold to-aureon-amber bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-aureon-gold-deep via-aureon-gold to-aureon-ocean bg-clip-text text-transparent;
   }
 }

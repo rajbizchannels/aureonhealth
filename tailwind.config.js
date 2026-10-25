@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// Brand palette, sampled from the AureonCare logo (gold "Aureon" + teal "Care").
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,14 +9,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'aureon-gold': '#F4A460',
-        'aureon-amber': '#FFB347',
-        'aureon-blue': '#1E3A8A',
-        'aureon-ocean': '#4AA5BF',
+        aureon: {
+          amber: '#FDC000',     // bright logo gold – buttons, accents
+          gold: '#F5A800',      // warm gold – gradients, rings
+          'gold-deep': '#B07A00', // gold that reads on white
+          teal: '#01B4A2',      // bright logo teal – gradients, accents
+          ocean: '#00857A',     // brand teal that reads on white (text, links)
+          blue: '#0B4F4A',      // deep teal – dark sections, body headings
+          green: '#0E8254',     // tagline green
+          beige: '#FFF6DB',     // warm cream
+        },
       },
       backgroundImage: {
-        'gradient-aureon': 'linear-gradient(135deg, #FFB347 0%, #F4A460 25%, #4AA5BF 75%, #1E3A8A 100%)',
-        'gradient-aureon-light': 'linear-gradient(135deg, rgba(255, 179, 71, 0.1) 0%, rgba(74, 165, 191, 0.1) 100%)',
+        'gradient-aureon': 'linear-gradient(135deg, #FDC000 0%, #F5A800 35%, #01B4A2 75%, #00857A 100%)',
+        'gradient-aureon-light': 'linear-gradient(135deg, rgba(253, 192, 0, 0.12) 0%, rgba(1, 180, 162, 0.12) 100%)',
       },
     },
   },

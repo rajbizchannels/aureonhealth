@@ -17,7 +17,7 @@ export default function Footer() {
                 height={40}
                 className="mr-3"
               />
-              <h3 className="text-2xl font-bold text-aureon-amber">AureonCare</h3>
+              <h3 className="text-2xl font-bold"><span className="text-aureon-amber">Aureon</span><span className="text-aureon-teal">Care</span></h3>
             </div>
             <p className="text-gray-200 mb-4">
               Transforming healthcare delivery with innovative solutions that empower
@@ -86,7 +86,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-500 mt-8 pt-8">
+        <div className="border-t border-aureon-teal/30 mt-8 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-gray-300 text-sm">
             <p>&copy; {new Date().getFullYear()} AureonCare. All rights reserved.</p>
             <div className="flex gap-6">

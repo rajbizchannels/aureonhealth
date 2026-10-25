@@ -14,10 +14,12 @@ This website serves as the primary marketing platform for AureonCare, featuring:
 
 ## Design
 
-The website features a beautiful gradient color palette:
-- **Gold/Amber**: #FFB347, #F4A460
-- **Ocean Blue**: #0C4A6E, #1E3A8A
-- Smooth gradient transitions throughout the site
+The website uses the gold and teal palette from the AureonCare logo
+(defined in `tailwind.config.js` under `aureon.*`):
+- **Gold**: #FDC000 (`aureon-amber`), #F5A800 (`aureon-gold`), #B07A00 (`aureon-gold-deep`, for text on white)
+- **Teal**: #01B4A2 (`aureon-teal`), #00857A (`aureon-ocean`, for text on white)
+- **Deep teal**: #0B4F4A (`aureon-blue`) for dark sections and headings
+- Gold-to-teal gradients throughout the site
 
 ## Tech Stack
 

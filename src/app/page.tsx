@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-aureon-amber via-aureon-gold to-aureon-beige min-h-[600px] flex items-center">
+      <section className="relative bg-gradient-to-br from-aureon-amber via-aureon-gold to-aureon-teal min-h-[600px] flex items-center">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
@@ -17,7 +17,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/product"
-              className="bg-white text-aureon-blue px-8 py-4 rounded-full font-semibold text-lg hover:bg-aureon-amber hover:text-white transition-all duration-300 shadow-lg"
+              className="bg-white text-aureon-blue px-8 py-4 rounded-full font-semibold text-lg hover:bg-aureon-amber hover:text-aureon-blue transition-all duration-300 shadow-lg"
             >
               Explore Our Product
             </Link>
@@ -109,7 +109,7 @@ export default function Home() {
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-aureon-amber text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300 shadow-lg"
+            className="inline-block bg-aureon-amber text-aureon-blue px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300 shadow-lg"
           >
             Contact Us Today
           </Link>
