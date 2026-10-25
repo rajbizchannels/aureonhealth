@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export default function Footer() {
   return (
@@ -24,18 +24,21 @@ export default function Footer() {
               providers and improve patient outcomes.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/aureoncare" className="hover:text-aureon-amber transition-colors">
+              <a href="https://www.facebook.com/aureoncare" aria-label="Facebook" className="hover:text-aureon-amber transition-colors">
                 <FaFacebook size={24} />
               </a>
-              <a href="https://x.com/aureoncare" className="hover:text-aureon-amber transition-colors">
+              <a href="https://x.com/aureoncare" aria-label="X" className="hover:text-aureon-amber transition-colors">
                 <FaTwitter size={24} />
               </a>
-              <a href="https://www.linkedin.com/company/aureoncare" className="hover:text-aureon-amber transition-colors">
+              <a href="https://www.linkedin.com/company/aureoncare" aria-label="LinkedIn" className="hover:text-aureon-amber transition-colors">
                 <FaLinkedin size={24} />
               </a>
-              {/*<a href="#" className="hover:text-aureon-amber transition-colors">
+              <a href="https://www.instagram.com/aureoncare" aria-label="Instagram" className="hover:text-aureon-amber transition-colors">
                 <FaInstagram size={24} />
-              </a>*/}
+              </a>
+              <a href="https://www.youtube.com/@aureoncare" aria-label="YouTube" className="hover:text-aureon-amber transition-colors">
+                <FaYoutube size={24} />
+              </a>
             </div>
           </div>
 
