@@ -33,3 +33,12 @@ body {
     @apply bg-gradient-to-r from-aureon-gold-deep via-aureon-gold to-aureon-ocean bg-clip-text text-transparent;
   }
 }
+
+/* Keep banner visuals still for visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed,
+  .animate-spin-slow {
+    animation: none;
+  }
+}

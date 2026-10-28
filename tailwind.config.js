@@ -20,6 +20,17 @@ module.exports = {
           beige: '#FFF6DB',     // warm cream
         },
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+      },
+      animation: {
+        float: 'float 6s ease-in-out infinite',
+        'float-delayed': 'float 6s ease-in-out 3s infinite',
+        'spin-slow': 'spin 60s linear infinite',
+      },
       backgroundImage: {
         'gradient-aureon': 'linear-gradient(135deg, #FDC000 0%, #F5A800 35%, #01B4A2 75%, #00857A 100%)',
         'gradient-aureon-light': 'linear-gradient(135deg, rgba(253, 192, 0, 0.12) 0%, rgba(1, 180, 162, 0.12) 100%)',
