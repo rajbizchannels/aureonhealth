@@ -11,6 +11,7 @@ import {
   FaMoneyBill,
   FaDollarSign,
 } from 'react-icons/fa'
+import PlatformHub from '@/components/PlatformHub'
 
 export default function Product() {
   const features = [
@@ -73,21 +74,29 @@ export default function Product() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-aureon-amber via-aureon-gold to-aureon-ocean py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-            AureonCare Platform
-          </h1>
-          <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto drop-shadow mb-8">
-            A comprehensive healthcare management solution designed to streamline operations,
-            enhance patient care, and drive better outcomes
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-white text-aureon-blue px-10 py-4 rounded-full font-semibold text-lg hover:bg-aureon-ocean hover:text-white transition-all duration-300 shadow-lg"
-          >
-            Request a Demo
-          </a>
+      <section className="relative overflow-hidden bg-gradient-to-br from-aureon-blue via-aureon-ocean to-aureon-blue py-20">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-aureon-amber/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-aureon-teal/30 blur-3xl" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div className="text-center lg:text-left">
+            <span className="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-aureon-amber ring-1 ring-white/20">
+              One platform · every workflow
+            </span>
+            <h1 className="mt-6 text-5xl font-bold text-white md:text-6xl">
+              AureonCare <span className="text-aureon-amber">Platform</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-xl text-xl text-white/85 lg:mx-0">
+              A comprehensive healthcare management solution designed to streamline operations,
+              enhance patient care, and drive better outcomes
+            </p>
+            <a
+              href="/contact"
+              className="mt-8 inline-block rounded-full bg-aureon-amber px-10 py-4 text-lg font-semibold text-aureon-blue shadow-lg transition-all duration-300 hover:bg-white"
+            >
+              Request a Demo
+            </a>
+          </div>
+          <PlatformHub />
         </div>
       </section>
 

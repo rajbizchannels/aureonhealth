@@ -1,35 +1,72 @@
 import Link from 'next/link'
-import { FaHeartbeat, FaUsers, FaLightbulb, FaAward } from 'react-icons/fa'
+import {
+  FaArrowRight,
+  FaAward,
+  FaCloud,
+  FaHeartbeat,
+  FaLightbulb,
+  FaPlug,
+  FaShieldAlt,
+  FaStethoscope,
+  FaUsers,
+} from 'react-icons/fa'
+import HeroDashboard from '@/components/HeroDashboard'
+import FeatureHighlights from '@/components/FeatureHighlights'
 
 export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-aureon-amber via-aureon-gold to-aureon-teal min-h-[600px] flex items-center">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
-            Welcome to AureonCare
-          </h1>
-          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto drop-shadow">
-            Transforming Healthcare Through Innovation and Excellence
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/product"
-              className="bg-white text-aureon-blue px-8 py-4 rounded-full font-semibold text-lg hover:bg-aureon-amber hover:text-aureon-blue transition-all duration-300 shadow-lg"
-            >
-              Explore Our Product
-            </Link>
-            <Link
-              href="/contact"
-              className="bg-aureon-ocean text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300 shadow-lg border-2 border-white"
-            >
-              Get in Touch
-            </Link>
+      <section className="relative overflow-hidden bg-gradient-to-b from-aureon-beige via-white to-white pb-28 pt-16 lg:pt-20">
+        {/* Background accents */}
+        <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-aureon-amber/25 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 top-24 h-[28rem] w-[28rem] rounded-full bg-aureon-teal/20 blur-3xl" />
+        <svg className="pointer-events-none absolute inset-x-0 bottom-4 h-24 w-full text-aureon-teal/20" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true">
+          <polyline points="0,60 380,60 410,60 430,20 450,95 470,40 490,60 820,60 840,35 860,80 880,60 1200,60" fill="none" stroke="currentColor" strokeWidth="2" />
+        </svg>
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div className="text-center lg:text-left">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-aureon-ocean shadow-sm ring-1 ring-aureon-teal/30">
+              <FaStethoscope className="text-aureon-gold" /> All-in-one practice platform for clinics
+            </span>
+            <h1 className="mt-6 text-4xl font-bold leading-tight text-aureon-blue sm:text-5xl lg:text-6xl">
+              Better care.
+              <br />
+              Smoother operations.
+              <br />
+              <span className="text-gradient-aureon">Stronger growth.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-gray-600 lg:mx-0">
+              AureonCare brings records, scheduling, e-prescribing and billing into one secure
+              platform, so your team spends less time on admin and more time with patients.
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-aureon-amber px-8 py-4 text-lg font-semibold text-aureon-blue shadow-lg shadow-aureon-amber/30 transition-all duration-300 hover:bg-aureon-gold"
+              >
+                Request a Demo <FaArrowRight />
+              </Link>
+              <Link
+                href="/product"
+                className="inline-flex items-center justify-center rounded-full border-2 border-aureon-ocean px-8 py-4 text-lg font-semibold text-aureon-ocean transition-all duration-300 hover:bg-aureon-ocean hover:text-white"
+              >
+                Explore the Platform
+              </Link>
+            </div>
+            <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-gray-600 lg:justify-start">
+              <li className="flex items-center gap-2"><FaShieldAlt className="text-aureon-ocean" /> GDPR &amp; HIPAA ready</li>
+              <li className="flex items-center gap-2"><FaCloud className="text-aureon-ocean" /> Cloud or on-premises</li>
+              <li className="flex items-center gap-2"><FaPlug className="text-aureon-ocean" /> HL7 &amp; FHIR</li>
+            </ul>
           </div>
+
+          <HeroDashboard />
         </div>
       </section>
+
+      <FeatureHighlights />
 
       {/* Features Section */}
       <section className="py-20 bg-white">
