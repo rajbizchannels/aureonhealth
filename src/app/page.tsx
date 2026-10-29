@@ -1,155 +1,164 @@
 import Link from 'next/link'
 import {
   FaArrowRight,
-  FaAward,
-  FaCloud,
+  FaChartLine,
+  FaEnvelope,
   FaHeartbeat,
-  FaLightbulb,
-  FaPlug,
-  FaShieldAlt,
-  FaStethoscope,
-  FaUsers,
+  FaLinkedin,
+  FaPhoneAlt,
+  FaRocket,
+  FaVideo,
+  FaComments,
+  FaBolt,
 } from 'react-icons/fa'
-import HeroDashboard from '@/components/HeroDashboard'
+import HeroCarousel from '@/components/banners/HeroCarousel'
 import FeatureHighlights from '@/components/FeatureHighlights'
+import ResourceCards from '@/components/ResourceCards'
+
+// The brand promise, "Health | Efficiency | Growth", tied to the features that deliver it.
+const pillars = [
+  {
+    icon: FaHeartbeat,
+    name: 'Health',
+    hook: 'Give every patient your full attention.',
+    text: 'The complete history, structured notes and safe prescribing in one place, plus a portal and video visits that keep patients connected.',
+    features: ['EHR & templates', 'e-Prescribing', 'Patient portal', 'Telehealth'],
+  },
+  {
+    icon: FaBolt,
+    name: 'Efficiency',
+    hook: 'Give your team back hours every week.',
+    text: 'Conflict-free scheduling, automatic reminders, tasks and notifications take the busywork off the front desk.',
+    features: ['Smart scheduling', 'Reminders & waitlist', 'Tasks & workflow', 'Role-based access'],
+  },
+  {
+    icon: FaChartLine,
+    name: 'Growth',
+    hook: 'Get paid for all the care you deliver.',
+    text: 'Track every claim to payment, follow up on denials and see which services and sites drive your revenue.',
+    features: ['Claims management', 'Revenue reports', 'Analytics', 'CRM'],
+  },
+]
+
+const steps = [
+  { icon: FaComments, title: 'Discovery call', text: 'Tell us how your practice runs today and where it hurts. 30 minutes, no obligation.' },
+  { icon: FaVideo, title: 'Tailored demo', text: 'See AureonCare set up for your specialty, your team and your workflow.' },
+  { icon: FaRocket, title: 'Go live, guided', text: 'Cloud or on-premises. We help configure roles, templates and schedules so your team starts confidently.' },
+]
 
 export default function Home() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-aureon-beige via-white to-white pb-28 pt-16 lg:pt-20">
-        {/* Background accents */}
-        <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-aureon-amber/25 blur-3xl" />
-        <div className="pointer-events-none absolute -right-32 top-24 h-[28rem] w-[28rem] rounded-full bg-aureon-teal/20 blur-3xl" />
-        <svg className="pointer-events-none absolute inset-x-0 bottom-4 h-24 w-full text-aureon-teal/20" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true">
-          <polyline points="0,60 380,60 410,60 430,20 450,95 470,40 490,60 820,60 840,35 860,80 880,60 1200,60" fill="none" stroke="currentColor" strokeWidth="2" />
-        </svg>
-
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div className="text-center lg:text-left">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-aureon-ocean shadow-sm ring-1 ring-aureon-teal/30">
-              <FaStethoscope className="text-aureon-gold" /> All-in-one practice platform for clinics
-            </span>
-            <h1 className="mt-6 text-4xl font-bold leading-tight text-aureon-blue sm:text-5xl lg:text-6xl">
-              Better care.
-              <br />
-              Smoother operations.
-              <br />
-              <span className="text-gradient-aureon">Stronger growth.</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-gray-600 lg:mx-0">
-              AureonCare brings records, scheduling, e-prescribing and billing into one secure
-              platform, so your team spends less time on admin and more time with patients.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-aureon-amber px-8 py-4 text-lg font-semibold text-aureon-blue shadow-lg shadow-aureon-amber/30 transition-all duration-300 hover:bg-aureon-gold"
-              >
-                Request a Demo <FaArrowRight />
-              </Link>
-              <Link
-                href="/product"
-                className="inline-flex items-center justify-center rounded-full border-2 border-aureon-ocean px-8 py-4 text-lg font-semibold text-aureon-ocean transition-all duration-300 hover:bg-aureon-ocean hover:text-white"
-              >
-                Explore the Platform
-              </Link>
-            </div>
-            <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-gray-600 lg:justify-start">
-              <li className="flex items-center gap-2"><FaShieldAlt className="text-aureon-ocean" /> GDPR &amp; HIPAA ready</li>
-              <li className="flex items-center gap-2"><FaCloud className="text-aureon-ocean" /> Cloud or on-premises</li>
-              <li className="flex items-center gap-2"><FaPlug className="text-aureon-ocean" /> HL7 &amp; FHIR</li>
-            </ul>
-          </div>
-
-          <HeroDashboard />
-        </div>
-      </section>
-
+      <HeroCarousel />
       <FeatureHighlights />
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gradient-aureon">
-            Why Choose AureonCare?
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-            We combine cutting-edge technology with compassionate care to deliver
-            exceptional healthcare solutions
-          </p>
+      {/* Brand promise */}
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-sm font-bold uppercase tracking-wider text-aureon-gold-deep">Health · Efficiency · Growth</span>
+            <h2 className="mt-3 text-4xl font-bold text-aureon-blue md:text-5xl">
+              Running a practice shouldn&apos;t feel like <span className="text-gradient-aureon">running two businesses</span>
+            </h2>
+            <p className="mt-5 text-xl text-gray-600">
+              One platform for the clinical side and the business side, so the whole team works from the same page.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Feature 1 */}
-            <div className="text-center p-6 rounded-lg hover:shadow-xl transition-shadow bg-gradient-aureon-light">
-              <div className="inline-block p-4 bg-gradient-to-br from-aureon-amber to-aureon-gold rounded-full mb-4">
-                <FaHeartbeat className="text-white text-4xl" />
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {pillars.map(({ icon: Icon, name, hook, text, features }) => (
+              <div key={name} className="flex flex-col rounded-3xl bg-gradient-aureon-light p-8 ring-1 ring-aureon-blue/5">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-aureon-amber to-aureon-teal text-xl text-white shadow-md">
+                    <Icon />
+                  </span>
+                  <span className="text-2xl font-bold text-aureon-blue">{name}</span>
+                </div>
+                <h3 className="mt-5 text-lg font-semibold text-aureon-ocean">{hook}</h3>
+                <p className="mt-2 flex-1 text-gray-600">{text}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {features.map((f) => (
+                    <span key={f} className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-aureon-blue ring-1 ring-aureon-teal/20">
+                      {f}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-aureon-ocean">
-                Patient-Centered Care
-              </h3>
-              <p className="text-gray-600">
-                Prioritizing patient needs and outcomes in every decision we make
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="text-center p-6 rounded-lg hover:shadow-xl transition-shadow bg-gradient-aureon-light">
-              <div className="inline-block p-4 bg-gradient-to-br from-aureon-gold to-aureon-ocean rounded-full mb-4">
-                <FaLightbulb className="text-white text-4xl" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-aureon-ocean">
-                Innovation First
-              </h3>
-              <p className="text-gray-600">
-                Leveraging the latest technology to revolutionize healthcare delivery
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="text-center p-6 rounded-lg hover:shadow-xl transition-shadow bg-gradient-aureon-light">
-              <div className="inline-block p-4 bg-gradient-to-br from-aureon-amber to-aureon-ocean rounded-full mb-4">
-                <FaUsers className="text-white text-4xl" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-aureon-ocean">
-                Expert Team
-              </h3>
-              <p className="text-gray-600">
-                Experienced professionals dedicated to healthcare excellence
-              </p>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="text-center p-6 rounded-lg hover:shadow-xl transition-shadow bg-gradient-aureon-light">
-              <div className="inline-block p-4 bg-gradient-to-br from-aureon-gold to-aureon-blue rounded-full mb-4">
-                <FaAward className="text-white text-4xl" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-aureon-ocean">
-                Proven Results
-              </h3>
-              <p className="text-gray-600">
-                Track record of improving patient outcomes and satisfaction
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Lead magnets */}
+      <section className="bg-gradient-to-b from-aureon-beige/60 to-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <span className="text-sm font-bold uppercase tracking-wider text-aureon-gold-deep">Free for practice leaders</span>
+            <h2 className="mt-3 text-4xl font-bold text-aureon-blue md:text-5xl">
+              Find the hidden costs <span className="text-gradient-aureon">in your practice</span>
+            </h2>
+            <p className="mt-5 text-xl text-gray-600">Start with a free tool. No sales call required.</p>
+          </div>
+          <ResourceCards />
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <h2 className="text-4xl font-bold text-aureon-blue md:text-5xl">
+              From first call to <span className="text-gradient-aureon">go-live</span>
+            </h2>
+          </div>
+          <ol className="grid gap-8 md:grid-cols-3">
+            {steps.map(({ icon: Icon, title, text }, i) => (
+              <li key={title} className="relative rounded-3xl border border-gray-100 p-8">
+                <span className="absolute -top-4 left-8 rounded-full bg-aureon-blue px-3 py-1 text-sm font-bold text-aureon-amber">
+                  Step {i + 1}
+                </span>
+                <Icon className="text-3xl text-aureon-teal" />
+                <h3 className="mt-4 text-xl font-bold text-aureon-blue">{title}</h3>
+                <p className="mt-2 text-gray-600">{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Connect */}
       <section className="bg-gradient-to-r from-aureon-ocean to-aureon-blue py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Transform Healthcare?
-          </h2>
-          <p className="text-xl text-gray-200 mb-8">
-            Join us in our mission to deliver exceptional healthcare solutions
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-white md:text-5xl">See it with your own workflow</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-xl text-gray-200">
+            Book a 20-minute demo tailored to your specialty, or reach us however suits you best.
           </p>
           <Link
-            href="/contact"
-            className="inline-block bg-aureon-amber text-aureon-blue px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300 shadow-lg"
+            href="/contact?interest=demo"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-aureon-amber px-10 py-4 text-lg font-semibold text-aureon-blue shadow-lg transition-all duration-300 hover:bg-white"
           >
-            Contact Us Today
+            Book my demo <FaArrowRight />
           </Link>
+          <div className="mt-10 grid gap-4 text-left sm:grid-cols-3">
+            <a href="tel:+4917620380707" className="flex items-center gap-3 rounded-2xl bg-white/10 p-4 text-white hover:bg-white/20">
+              <FaPhoneAlt className="text-aureon-amber" />
+              <span>
+                <span className="block text-sm text-gray-300">Call us</span>+49 176 203 80707
+              </span>
+            </a>
+            <a href="mailto:info@aureoncare.tech" className="flex items-center gap-3 rounded-2xl bg-white/10 p-4 text-white hover:bg-white/20">
+              <FaEnvelope className="text-aureon-amber" />
+              <span>
+                <span className="block text-sm text-gray-300">Email us</span>info@aureoncare.tech
+              </span>
+            </a>
+            <a href="https://www.linkedin.com/company/aureoncare" className="flex items-center gap-3 rounded-2xl bg-white/10 p-4 text-white hover:bg-white/20">
+              <FaLinkedin className="text-aureon-amber" />
+              <span>
+                <span className="block text-sm text-gray-300">Connect on</span>LinkedIn
+              </span>
+            </a>
+          </div>
         </div>
       </section>
     </div>

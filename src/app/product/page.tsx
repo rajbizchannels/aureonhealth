@@ -90,7 +90,7 @@ export default function Product() {
               enhance patient care, and drive better outcomes
             </p>
             <a
-              href="/contact"
+              href="/contact?interest=demo"
               className="mt-8 inline-block rounded-full bg-aureon-amber px-10 py-4 text-lg font-semibold text-aureon-blue shadow-lg transition-all duration-300 hover:bg-white"
             >
               Request a Demo
@@ -212,26 +212,31 @@ export default function Product() {
       <section className="bg-gradient-to-r from-aureon-ocean to-aureon-blue py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Transform Your Practice?
+            See it with your own workflow
           </h2>
           <p className="text-xl text-gray-200 mb-8">
-            Schedule a personalized demo and see how AureonCare can revolutionize your
-            healthcare delivery
+            A 20-minute demo, set up for your specialty and your team. No slides, just the platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/contact"
+              href="/contact?interest=demo"
               className="bg-aureon-amber text-aureon-blue px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300 shadow-lg"
             >
               Request a Demo
             </a>
             <a
-              href="/contact"
+              href="/contact?interest=sales"
               className="bg-transparent text-white border-2 border-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300"
             >
               Contact Sales
             </a>
           </div>
+          <p className="mt-8 text-gray-200">
+            Not ready for a demo?{' '}
+            <a href="/resources/revenue-leak-checklist" className="font-semibold text-aureon-amber underline underline-offset-4 hover:text-white">
+              Start with the free Revenue Leak Checklist
+            </a>
+          </p>
         </div>
       </section>
     </div>

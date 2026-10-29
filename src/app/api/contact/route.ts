@@ -8,11 +8,35 @@ interface ContactFormData {
   organization?: string
   subject: string
   message: string
+  role?: string
+  source?: string
+  website?: string // hidden spam trap; real visitors leave it empty
 }
+
+// Readable labels for the subject codes the site sends.
+const SUBJECT_LABELS: Record<string, string> = {
+  demo: 'Demo request',
+  assessment: 'Free efficiency assessment',
+  sales: 'Sales inquiry',
+  support: 'Technical support',
+  partnership: 'Partnership',
+  checklist: 'Revenue Leak Checklist download',
+  calculator: 'No-show calculator follow-up',
+  newsletter: 'Newsletter signup',
+  other: 'Other',
+}
+
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
 
 export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json()
+
+    // Bots fill every field; quietly accept and drop.
+    if (body.website) {
+      return NextResponse.json({ success: true })
+    }
 
     // Validate required fields
     if (!body.name || !body.email || !body.subject || !body.message) {
@@ -60,16 +84,20 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    // Email content
+    // Email content (visitor input is escaped before it goes into HTML)
+    const subjectLabel = SUBJECT_LABELS[body.subject] || body.subject
+    const row = (label: string, value?: string) =>
+      value ? `<p><strong>${label}:</strong> ${escapeHtml(value)}</p>` : ''
     const emailHtml = `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${body.name}</p>
-      <p><strong>Email:</strong> ${body.email}</p>
-      ${body.phone ? `<p><strong>Phone:</strong> ${body.phone}</p>` : ''}
-      ${body.organization ? `<p><strong>Organization:</strong> ${body.organization}</p>` : ''}
-      <p><strong>Subject:</strong> ${body.subject}</p>
+      <h2>New Website Lead: ${escapeHtml(subjectLabel)}</h2>
+      ${row('Name', body.name)}
+      ${row('Email', body.email)}
+      ${row('Phone', body.phone)}
+      ${row('Organization', body.organization)}
+      ${row('Role', body.role)}
+      ${row('Source', body.source)}
       <p><strong>Message:</strong></p>
-      <p>${body.message.replace(/\n/g, '<br>')}</p>
+      <p>${escapeHtml(body.message).replace(/\n/g, '<br>')}</p>
     `
 
     // Send email
@@ -77,7 +105,7 @@ export async function POST(request: NextRequest) {
       from: `"AureonCare Contact Form" <${process.env.SMTP_USER}>`,
       to: process.env.EMAIL_TO || 'rajbizchannels@gmail.com',
       replyTo: body.email,
-      subject: `AureonCare Contact Form: ${body.subject}`,
+      subject: `AureonCare Website: ${subjectLabel.replace(/[\r\n]/g, ' ')}`,
       html: emailHtml,
       text: `
 New Contact Form Submission
@@ -86,7 +114,9 @@ Name: ${body.name}
 Email: ${body.email}
 ${body.phone ? `Phone: ${body.phone}` : ''}
 ${body.organization ? `Organization: ${body.organization}` : ''}
-Subject: ${body.subject}
+${body.role ? `Role: ${body.role}` : ''}
+${body.source ? `Source: ${body.source}` : ''}
+Subject: ${subjectLabel}
 
 Message:
 ${body.message}
