@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   FaPhone,
   FaEnvelope,
@@ -11,7 +11,33 @@ import {
   FaFacebook,
   FaInstagram,
   FaYoutube,
+  FaVideo,
+  FaStethoscope,
+  FaHandshake,
+  FaBriefcase,
+  FaLifeRing,
 } from 'react-icons/fa'
+
+// Ways to connect. Picking one pre-fills the form's subject.
+const paths = [
+  { id: 'demo', icon: FaVideo, title: 'Book a demo', text: '20 minutes, tailored to your specialty', placeholder: 'Your specialty, team size and what you would like to see in the demo…' },
+  { id: 'assessment', icon: FaStethoscope, title: 'Free assessment', text: 'A practical review of your workflow', placeholder: 'Where does your practice lose the most time or revenue today?' },
+  { id: 'sales', icon: FaBriefcase, title: 'Talk to sales', text: 'Plans, multi-site and on-premises', placeholder: 'Number of sites and providers, and whether you prefer cloud or on-premises…' },
+  { id: 'partnership', icon: FaHandshake, title: 'Partner with us', text: 'Labs, pharmacies, resellers, events', placeholder: 'Tell us about your organisation and the partnership you have in mind…' },
+  { id: 'support', icon: FaLifeRing, title: 'Get support', text: 'For existing AureonCare customers', placeholder: 'Describe the issue and the steps that lead to it…' },
+]
+
+const subjects = [
+  ['demo', 'Request a demo'],
+  ['assessment', 'Free efficiency assessment'],
+  ['calculator', 'Follow up on my no-show estimate'],
+  ['sales', 'Sales inquiry'],
+  ['partnership', 'Partnership opportunities'],
+  ['support', 'Technical support'],
+  ['other', 'Other'],
+]
+
+const roles = ['Practice owner / manager', 'Doctor / clinician', 'Front desk / admin', 'IT / compliance', 'Partner / vendor', 'Other']
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -21,11 +47,29 @@ export default function Contact() {
     organization: '',
     subject: '',
     message: '',
+    role: '',
+    website: '',
   })
 
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  // Links like /contact?interest=assessment pre-select the subject.
+  useEffect(() => {
+    const interest = new URLSearchParams(window.location.search).get('interest')
+    if (interest && subjects.some(([id]) => id === interest)) {
+      setFormData((f) => ({ ...f, subject: interest }))
+    }
+  }, [])
+
+  const choosePath = (id: string) => {
+    setFormData((f) => ({ ...f, subject: id }))
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const placeholder =
+    paths.find((p) => p.id === formData.subject)?.placeholder || 'Tell us how we can help you...'
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -47,7 +91,7 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, source: 'Contact page' }),
       })
 
       const data = await response.json()
@@ -64,6 +108,8 @@ export default function Contact() {
         organization: '',
         subject: '',
         message: '',
+        role: '',
+        website: '',
       })
       setTimeout(() => setSubmitted(false), 5000)
     } catch (err) {
@@ -77,15 +123,34 @@ export default function Contact() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-aureon-amber via-aureon-gold to-aureon-ocean py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-            Get in Touch
+      <section className="relative overflow-hidden bg-gradient-to-b from-aureon-beige via-white to-white pb-16 pt-20">
+        <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-aureon-amber/25 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-aureon-teal/20 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-bold text-aureon-blue md:text-6xl">
+            Let&apos;s talk about <span className="text-gradient-aureon">your practice</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto drop-shadow">
-            We&apos;re here to help. Reach out to learn more about AureonCare or schedule
-            a demo
+          <p className="mx-auto mt-5 max-w-2xl text-xl text-gray-600">
+            Whether you&apos;re exploring options, ready for a demo or want to partner with us, pick the way that suits you.
           </p>
+          <div className="mt-12 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-5">
+            {paths.map(({ id, icon: Icon, title, text }) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => choosePath(id)}
+                className={`rounded-2xl bg-white p-5 text-left shadow-lg shadow-aureon-blue/5 ring-1 transition-all hover:-translate-y-1 hover:shadow-xl ${
+                  formData.subject === id ? 'ring-2 ring-aureon-amber' : 'ring-aureon-blue/5'
+                }`}
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-aureon-amber to-aureon-teal text-white">
+                  <Icon />
+                </span>
+                <span className="mt-3 block font-semibold text-aureon-blue">{title}</span>
+                <span className="mt-1 block text-sm text-gray-600">{text}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -195,7 +260,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gradient-aureon-light p-8 rounded-lg">
+            <div id="contact-form" className="scroll-mt-28 bg-gradient-aureon-light p-8 rounded-lg">
               <h2 className="text-3xl font-bold mb-6 text-gradient-aureon">Send a Message</h2>
 
               {submitted && (
@@ -302,13 +367,42 @@ export default function Contact() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
                   >
                     <option value="">Select a subject</option>
-                    <option value="demo">Request a Demo</option>
-                    <option value="sales">Sales Inquiry</option>
-                    <option value="support">Technical Support</option>
-                    <option value="partnership">Partnership Opportunities</option>
-                    <option value="other">Other</option>
+                    {subjects.map(([id, label]) => (
+                      <option key={id} value={id}>
+                        {label}
+                      </option>
+                    ))}
                   </select>
                 </div>
+
+                <div>
+                  <label htmlFor="role" className="block text-sm font-semibold text-aureon-ocean mb-2">
+                    Your Role
+                  </label>
+                  <select
+                    id="role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
+                  >
+                    <option value="">Select your role</option>
+                    {roles.map((r) => (
+                      <option key={r}>{r}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
 
                 <div>
                   <label
@@ -325,7 +419,7 @@ export default function Contact() {
                     required
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
-                    placeholder="Tell us how we can help you..."
+                    placeholder={placeholder}
                   />
                 </div>
 

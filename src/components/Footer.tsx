@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Logo from './Logo'
+import NewsletterSignup from './NewsletterSignup'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export default function Footer() {
@@ -33,6 +34,10 @@ export default function Footer() {
                 <FaYoutube size={24} />
               </a>
             </div>
+            <div className="mt-6 max-w-md">
+              <h4 className="mb-2 text-lg font-semibold text-aureon-amber">Stay in the loop</h4>
+              <NewsletterSignup />
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -50,8 +55,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/team" className="hover:text-aureon-amber transition-colors">
-                  Team
+                <Link href="/resources" className="hover:text-aureon-amber transition-colors">
+                  Free Resources
                 </Link>
               </li>
               <li>
