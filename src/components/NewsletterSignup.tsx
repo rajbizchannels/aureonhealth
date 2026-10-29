@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { submitLead } from '@/lib/submitLead'
+import type { Dictionary } from '@/i18n/en'
 
 // Compact email signup for the footer.
-export default function NewsletterSignup() {
+export default function NewsletterSignup({ t }: { t: Dictionary['newsletter'] }) {
   const [email, setEmail] = useState('')
   const [trap, setTrap] = useState('')
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
@@ -18,25 +19,26 @@ export default function NewsletterSignup() {
         name: email.split('@')[0],
         email,
         subject: 'newsletter',
-        message: 'Please add me to the AureonCare practice insights newsletter.',
-        source: 'Footer newsletter signup',
+        message: t.message,
+        source: t.source,
         website: trap,
       })
       setState('done')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Please try again.')
+      console.error('Newsletter signup failed:', err)
+      setError(t.error)
       setState('error')
     }
   }
 
   if (state === 'done') {
-    return <p className="text-sm text-aureon-amber">Thanks! You&apos;re on the list.</p>
+    return <p className="text-sm text-aureon-amber">{t.thanks}</p>
   }
 
   return (
     <form onSubmit={onSubmit} className="space-y-2">
       <label htmlFor="newsletter-email" className="text-sm text-gray-200">
-        Practice insights, product news and event invites. Monthly, no spam.
+        {t.label}
       </label>
       <div className="flex gap-2">
         <input
@@ -45,7 +47,7 @@ export default function NewsletterSignup() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@clinic.com"
+          placeholder={t.placeholder}
           className="min-w-0 flex-1 rounded-full border-0 bg-white/10 px-4 py-2 text-sm text-white placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-aureon-amber"
         />
         <input type="text" tabIndex={-1} autoComplete="off" value={trap} onChange={(e) => setTrap(e.target.value)} className="hidden" aria-hidden="true" />
@@ -54,7 +56,7 @@ export default function NewsletterSignup() {
           disabled={state === 'sending'}
           className="shrink-0 rounded-full bg-aureon-amber px-4 py-2 text-sm font-semibold text-aureon-blue hover:bg-aureon-gold disabled:opacity-60"
         >
-          {state === 'sending' ? 'Sending…' : 'Subscribe'}
+          {state === 'sending' ? t.sending : t.subscribe}
         </button>
       </div>
       {state === 'error' && <p className="text-xs text-red-200">{error}</p>}

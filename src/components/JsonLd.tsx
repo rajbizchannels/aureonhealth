@@ -50,7 +50,7 @@ export const websiteSchema = {
   name: site.name,
   url: SITE_URL,
   publisher: { '@id': organizationId },
-  inLanguage: 'en',
+  inLanguage: ['en', 'de'],
 }
 
 export function breadcrumbSchema(items: { name: string; path: string }[]) {

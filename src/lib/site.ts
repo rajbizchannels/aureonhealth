@@ -54,49 +54,7 @@ export const features = [
   'Cloud-based or on-premises deployment',
 ]
 
-// Plain-language answers, written so they make sense when quoted on their own.
-export const faqs: { q: string; a: string }[] = [
-  {
-    q: 'What is AureonCare?',
-    a: 'AureonCare is an all-in-one practice management platform for clinics. It brings electronic health records, appointment scheduling, e-prescribing, telehealth, a patient portal and revenue cycle management into one system, so clinical and administrative teams work from the same records.',
-  },
-  {
-    q: 'Who is AureonCare for?',
-    a: 'AureonCare is built for private medical practices, multi-specialty clinics, healthcare groups with several sites, telehealth providers and ambulatory care centers. It has dedicated roles for doctors, nurses, receptionists, billing managers and administrators, plus a separate portal for patients.',
-  },
-  {
-    q: 'How does AureonCare help reduce no-shows?',
-    a: 'AureonCare sends automated appointment reminders, tracks confirmations and keeps a waitlist so cancelled slots can be offered to other patients. Double-booking prevention and conflict detection keep the calendar accurate.',
-  },
-  {
-    q: 'Does AureonCare include billing and claims management?',
-    a: 'Yes. AureonCare includes revenue cycle management: it tracks every claim from pending and submitted through approved, denied and paid, stores diagnosis and procedure codes, records payments, and reports on revenue and claims so denials can be followed up quickly.',
-  },
-  {
-    q: 'Is AureonCare GDPR and HIPAA compliant?',
-    a: 'AureonCare is built to be GDPR and HIPAA ready, with encrypted data storage, role-based access control with granular permissions, and audit logging. Compliance also depends on how each practice configures and uses the system.',
-  },
-  {
-    q: 'Does AureonCare support FHIR and HL7?',
-    a: 'Yes. AureonCare supports FHIR R4 and HL7, so it can exchange data with labs, pharmacies, other EHR systems and billing platforms through open standards and a RESTful API.',
-  },
-  {
-    q: 'Can AureonCare run on-premises?',
-    a: 'Yes. AureonCare can run in the cloud or on-premises, so practices and groups can choose the deployment that fits their data protection and IT requirements.',
-  },
-  {
-    q: 'Which languages does AureonCare support?',
-    a: 'AureonCare is available in 8 languages: English, German, French, Spanish, Portuguese, Chinese, Arabic and Hindi.',
-  },
-  {
-    q: 'Does AureonCare offer telehealth?',
-    a: 'Yes. AureonCare includes secure telehealth video visits linked to appointments, and patients can join from the patient portal.',
-  },
-  {
-    q: 'How do I get started with AureonCare?',
-    a: 'Book a 20-minute demo or a free practice efficiency assessment through the contact page at aureoncare.tech. The team reviews your workflow, shows AureonCare set up for your specialty, and guides you through setup.',
-  },
-]
+// FAQs live in the dictionaries (src/i18n/en.ts and de.ts).
 
 // Pages for the sitemap and llms.txt. The team page is left out on purpose.
 export const pages = [

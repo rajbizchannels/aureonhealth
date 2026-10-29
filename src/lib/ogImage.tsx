@@ -2,12 +2,13 @@ import { readFile } from 'fs/promises'
 import { join } from 'path'
 import { ImageResponse } from 'next/og'
 
-// Default share image for every page (LinkedIn, WhatsApp, X, Slack, etc.).
-export const alt = 'AureonCare: EHR, scheduling and billing software for clinics'
-export const size = { width: 1200, height: 630 }
-export const contentType = 'image/png'
+import { type Locale, getDictionary } from '@/i18n'
 
-export default async function OpenGraphImage() {
+export const ogSize = { width: 1200, height: 630 }
+
+// Share image (LinkedIn, WhatsApp, X, Slack, etc.) in the given language.
+export async function renderOgImage(locale: Locale) {
+  const t = getDictionary(locale).meta
   const logo = await readFile(join(process.cwd(), 'public/logos/aureoncare-full-logo.png'))
   const logoSrc = `data:image/png;base64,${logo.toString('base64')}`
 
@@ -29,18 +30,18 @@ export default async function OpenGraphImage() {
         <img src={logoSrc} width={450} height={150} alt="" />
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 60, fontWeight: 700, color: '#0B4F4A', lineHeight: 1.1 }}>
-            One platform for records, scheduling,
+            {t.ogHeadline1}
           </div>
           <div style={{ fontSize: 60, fontWeight: 700, color: '#B07A00', lineHeight: 1.1 }}>
-            e-prescribing, telehealth & billing.
+            {t.ogHeadline2}
           </div>
           <div style={{ marginTop: 24, fontSize: 30, color: '#00857A' }}>
-            Practice management for clinics · GDPR & HIPAA ready · FHIR & HL7
+            {t.ogSub}
           </div>
         </div>
         <div style={{ display: 'flex', height: 12, width: '100%', borderRadius: 6, background: 'linear-gradient(90deg, #FDC000, #01B4A2)' }} />
       </div>
     ),
-    size,
+    ogSize,
   )
 }

@@ -18,28 +18,15 @@ import {
   FaLifeRing,
 } from 'react-icons/fa'
 
-// Ways to connect. Picking one pre-fills the form's subject.
-const paths = [
-  { id: 'demo', icon: FaVideo, title: 'Book a demo', text: '20 minutes, tailored to your specialty', placeholder: 'Your specialty, team size and what you would like to see in the demo…' },
-  { id: 'assessment', icon: FaStethoscope, title: 'Free assessment', text: 'A practical review of your workflow', placeholder: 'Where does your practice lose the most time or revenue today?' },
-  { id: 'sales', icon: FaBriefcase, title: 'Talk to sales', text: 'Plans, multi-site and on-premises', placeholder: 'Number of sites and providers, and whether you prefer cloud or on-premises…' },
-  { id: 'partnership', icon: FaHandshake, title: 'Partner with us', text: 'Labs, pharmacies, resellers, events', placeholder: 'Tell us about your organisation and the partnership you have in mind…' },
-  { id: 'support', icon: FaLifeRing, title: 'Get support', text: 'For existing AureonCare customers', placeholder: 'Describe the issue and the steps that lead to it…' },
-]
+import type { Dictionary } from '@/i18n/en'
+import { type Locale, localePath } from '@/i18n/config'
 
-const subjects = [
-  ['demo', 'Request a demo'],
-  ['assessment', 'Free efficiency assessment'],
-  ['calculator', 'Follow up on my no-show estimate'],
-  ['sales', 'Sales inquiry'],
-  ['partnership', 'Partnership opportunities'],
-  ['support', 'Technical support'],
-  ['other', 'Other'],
-]
+// Icons for the ways to connect, in the same order as the dictionary.
+const pathIcons = [FaVideo, FaStethoscope, FaBriefcase, FaHandshake, FaLifeRing]
 
-const roles = ['Practice owner / manager', 'Doctor / clinician', 'Front desk / admin', 'IT / compliance', 'Partner / vendor', 'Other']
-
-export default function Contact() {
+export default function ContactView({ locale, t }: { locale: Locale; t: Dictionary['contact'] }) {
+  const paths = t.paths.map((p, i) => ({ ...p, icon: pathIcons[i] }))
+  const subjects = t.subjects
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -69,7 +56,7 @@ export default function Contact() {
   }
 
   const placeholder =
-    paths.find((p) => p.id === formData.subject)?.placeholder || 'Tell us how we can help you...'
+    paths.find((p) => p.id === formData.subject)?.placeholder || t.messagePlaceholder
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -91,12 +78,11 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...formData, source: 'Contact page' }),
+        body: JSON.stringify({ ...formData, source: t.source }),
       })
 
-      const data = await response.json()
-
       if (!response.ok) {
+        const data = await response.json().catch(() => ({}))
         throw new Error(data.error || 'Failed to send message')
       }
 
@@ -113,7 +99,7 @@ export default function Contact() {
       })
       setTimeout(() => setSubmitted(false), 5000)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.')
+      setError(t.error)
       console.error('Form submission error:', err)
     } finally {
       setLoading(false)
@@ -128,10 +114,10 @@ export default function Contact() {
         <div className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-aureon-teal/20 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-aureon-blue md:text-6xl">
-            Let&apos;s talk about <span className="text-gradient-aureon">your practice</span>
+            {t.titleStart} <span className="text-gradient-aureon">{t.titleHighlight}</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-xl text-gray-600">
-            Whether you&apos;re exploring options, ready for a demo or want to partner with us, pick the way that suits you.
+            {t.sub}
           </p>
           <div className="mt-12 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-5">
             {paths.map(({ id, icon: Icon, title, text }) => (
@@ -161,11 +147,10 @@ export default function Contact() {
             {/* Contact Information */}
             <div>
               <h2 className="text-4xl font-bold mb-8 text-gradient-aureon">
-                Contact Information
+                {t.infoTitle}
               </h2>
               <p className="text-lg text-gray-700 mb-8">
-                Have questions? We&apos;d love to hear from you. Send us a message and
-                we&apos;ll respond as soon as possible.
+                {t.infoSub}
               </p>
 
               <div className="space-y-6">
@@ -174,7 +159,7 @@ export default function Contact() {
                     <FaPhone className="text-white text-xl" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-aureon-ocean mb-1">Phone</h3>
+                    <h3 className="text-lg font-semibold text-aureon-ocean mb-1">{t.phone}</h3>
                     <p className="text-gray-600">+49 176 203 80707</p>
                   </div>
                 </div>
@@ -184,7 +169,7 @@ export default function Contact() {
                     <FaEnvelope className="text-white text-xl" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-aureon-ocean mb-1">Email</h3>
+                    <h3 className="text-lg font-semibold text-aureon-ocean mb-1">{t.email}</h3>
                     <p className="text-gray-600">info@aureoncare.tech</p>
                     <p className="text-gray-600">support@aureoncare.tech</p>
                   </div>
@@ -195,10 +180,10 @@ export default function Contact() {
                     <FaMapMarkerAlt className="text-white text-xl" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-aureon-ocean mb-1">Address</h3>
+                    <h3 className="text-lg font-semibold text-aureon-ocean mb-1">{t.address}</h3>
                     {/*<p className="text-gray-600">Ostlandstr 35</p>*/}
                     <p className="text-gray-600">97816 Lohr am Main</p>
-                    <p className="text-gray-600">Germany</p>
+                    <p className="text-gray-600">{t.country}</p>
                   </div>
                 </div>
 
@@ -208,17 +193,17 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-aureon-ocean mb-1">
-                      Business Hours
+                      {t.hours}
                     </h3>
-                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM CET</p>
-                    <p className="text-gray-600">Saturday - Sunday: Closed</p>
+                    <p className="text-gray-600">{t.hoursWeek}</p>
+                    <p className="text-gray-600">{t.hoursWeekend}</p>
                   </div>
                 </div>
               </div>
 
               {/* Social Media */}
               <div className="mt-8">
-                <h3 className="text-lg font-semibold text-aureon-ocean mb-4">Follow Us</h3>
+                <h3 className="text-lg font-semibold text-aureon-ocean mb-4">{t.follow}</h3>
                 <div className="flex space-x-4">
                   <a
                     href="https://www.linkedin.com/company/aureoncare"
@@ -261,12 +246,11 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div id="contact-form" className="scroll-mt-28 bg-gradient-aureon-light p-8 rounded-lg">
-              <h2 className="text-3xl font-bold mb-6 text-gradient-aureon">Send a Message</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gradient-aureon">{t.formTitle}</h2>
 
               {submitted && (
                 <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
-                  Thank you! Your message has been sent successfully. We&apos;ll get back to
-                  you soon.
+                  {t.success}
                 </div>
               )}
 
@@ -282,7 +266,7 @@ export default function Contact() {
                     htmlFor="name"
                     className="block text-sm font-semibold text-aureon-ocean mb-2"
                   >
-                    Full Name *
+                    {t.name}
                   </label>
                   <input
                     type="text"
@@ -292,7 +276,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
-                    placeholder="John Doe"
+                    placeholder={t.namePlaceholder}
                   />
                 </div>
 
@@ -301,7 +285,7 @@ export default function Contact() {
                     htmlFor="email"
                     className="block text-sm font-semibold text-aureon-ocean mb-2"
                   >
-                    Email Address *
+                    {t.emailLabel}
                   </label>
                   <input
                     type="email"
@@ -311,7 +295,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
-                    placeholder="john@example.com"
+                    placeholder={t.emailPlaceholder}
                   />
                 </div>
 
@@ -320,7 +304,7 @@ export default function Contact() {
                     htmlFor="phone"
                     className="block text-sm font-semibold text-aureon-ocean mb-2"
                   >
-                    Phone Number
+                    {t.phoneLabel}
                   </label>
                   <input
                     type="tel"
@@ -329,7 +313,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
-                    placeholder="(555) 123-4567"
+                    placeholder={t.phonePlaceholder}
                   />
                 </div>
 
@@ -338,7 +322,7 @@ export default function Contact() {
                     htmlFor="organization"
                     className="block text-sm font-semibold text-aureon-ocean mb-2"
                   >
-                    Organization
+                    {t.organization}
                   </label>
                   <input
                     type="text"
@@ -347,7 +331,7 @@ export default function Contact() {
                     value={formData.organization}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
-                    placeholder="Your Healthcare Practice"
+                    placeholder={t.organizationPlaceholder}
                   />
                 </div>
 
@@ -356,7 +340,7 @@ export default function Contact() {
                     htmlFor="subject"
                     className="block text-sm font-semibold text-aureon-ocean mb-2"
                   >
-                    Subject *
+                    {t.subject}
                   </label>
                   <select
                     id="subject"
@@ -366,7 +350,7 @@ export default function Contact() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
                   >
-                    <option value="">Select a subject</option>
+                    <option value="">{t.subjectPlaceholder}</option>
                     {subjects.map(([id, label]) => (
                       <option key={id} value={id}>
                         {label}
@@ -377,7 +361,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="role" className="block text-sm font-semibold text-aureon-ocean mb-2">
-                    Your Role
+                    {t.role}
                   </label>
                   <select
                     id="role"
@@ -386,8 +370,8 @@ export default function Contact() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aureon-gold focus:border-transparent"
                   >
-                    <option value="">Select your role</option>
-                    {roles.map((r) => (
+                    <option value="">{t.rolePlaceholder}</option>
+                    {t.roles.map((r) => (
                       <option key={r}>{r}</option>
                     ))}
                   </select>
@@ -409,7 +393,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="block text-sm font-semibold text-aureon-ocean mb-2"
                   >
-                    Message *
+                    {t.message}
                   </label>
                   <textarea
                     id="message"
@@ -428,7 +412,7 @@ export default function Contact() {
                   disabled={loading}
                   className="w-full bg-gradient-to-r from-aureon-amber to-aureon-ocean text-white py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {loading ? 'Sending...' : 'Send Message'}
+                  {loading ? t.sending : t.send}
                 </button>
               </form>
             </div>
@@ -454,23 +438,23 @@ export default function Contact() {
       <section className="bg-gradient-to-r from-aureon-ocean to-aureon-blue py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Get Started?
+            {t.ctaTitle}
           </h2>
           <p className="text-xl text-gray-200 mb-8">
-            Schedule a demo today and see how AureonCare can transform your practice
+            {t.ctaSub}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/product"
+              href={localePath(locale, '/product')}
               className="bg-aureon-amber text-aureon-blue px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
             >
-              Learn More
+              {t.ctaPrimary}
             </a>
             <a
               href="tel:+4917620380707"
               className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
             >
-              Call Us Now
+              {t.ctaSecondary}
             </a>
           </div>
         </div>
