@@ -1,3 +1,13 @@
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'Team',
+  description:
+    'The AureonCare team.',
+  path: '/team',
+  noindex: true,
+})
+
 import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa'
 
 export default function Team() {

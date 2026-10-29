@@ -14,6 +14,19 @@ import {
 import HeroCarousel from '@/components/banners/HeroCarousel'
 import FeatureHighlights from '@/components/FeatureHighlights'
 import ResourceCards from '@/components/ResourceCards'
+import Faq from '@/components/Faq'
+import { faqs } from '@/lib/site'
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = {
+  ...pageMetadata({
+    title: 'AureonCare | EHR, Scheduling & Billing Software for Clinics',
+    description:
+      'All-in-one software for clinics: EHR, scheduling, e-prescribing, telehealth and billing. Fewer no-shows and denied claims. GDPR & HIPAA ready.',
+    path: '/',
+  }),
+  title: { absolute: 'AureonCare | EHR, Scheduling & Billing Software for Clinics' },
+}
 
 // The brand promise, "Health | Efficiency | Growth", tied to the features that deliver it.
 const pillars = [
@@ -125,6 +138,8 @@ export default function Home() {
           </ol>
         </div>
       </section>
+
+      <Faq faqs={faqs} />
 
       {/* Connect */}
       <section className="bg-gradient-to-r from-aureon-ocean to-aureon-blue py-20">

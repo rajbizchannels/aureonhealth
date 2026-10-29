@@ -1,14 +1,16 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'Terms of Service | AureonCare',
-  description: 'AureonCare Terms of Service — the legal agreement governing use of our healthcare technology platform.',
-}
+export const metadata = pageMetadata({
+  title: 'Terms of Service',
+  description:
+    'AureonCare Terms of Service — the legal agreement governing use of our healthcare technology platform.',
+  path: '/terms-of-service',
+})
 
 export default function TermsOfServicePage() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-gradient-to-r from-aureon-ocean to-aureon-blue text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -578,6 +580,6 @@ export default function TermsOfServicePage() {
 
         </div>
       </section>
-    </main>
+    </div>
   )
 }

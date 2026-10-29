@@ -1,14 +1,16 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import { FaCheckSquare } from 'react-icons/fa'
 import LeadGate from '@/components/LeadGate'
+import JsonLd, { breadcrumbSchema } from '@/components/JsonLd'
 import PrintButton from './PrintButton'
 
-export const metadata: Metadata = {
-  title: 'The Revenue Leak Checklist | AureonCare',
+export const metadata = pageMetadata({
+  title: 'The Revenue Leak Checklist for Medical Practices',
   description:
     '15 places medical practices lose revenue, from booking to final payment, and how to fix each one. Free checklist for practice owners and managers.',
-}
+  path: '/resources/revenue-leak-checklist',
+})
 
 // Each item: the check, and (where it applies) how AureonCare supports it.
 const stages = [
@@ -49,9 +51,43 @@ const stages = [
   },
 ]
 
+function Stage({ stage, n }: { stage: (typeof stages)[number]; n: number }) {
+  return (
+    <div className="mt-8 first:mt-0">
+      <h2 className="text-xl font-bold text-aureon-blue">
+        <span className="text-aureon-gold-deep">{n}.</span> {stage.title}
+      </h2>
+      <ul className="mt-4 space-y-3">
+        {stage.items.map(([check, help]) => (
+          <li key={check} className="flex gap-3 rounded-xl border border-gray-100 p-4">
+            <FaCheckSquare className="mt-1 shrink-0 text-aureon-teal" />
+            <div>
+              <div className="text-aureon-blue">{check}</div>
+              {help && (
+                <div className="mt-1 text-sm text-aureon-ocean">
+                  <span className="font-semibold">In AureonCare:</span> {help}
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+const card = 'rounded-3xl bg-white p-8 shadow-xl shadow-aureon-blue/5 ring-1 ring-aureon-blue/5 print:shadow-none print:ring-0'
+
 export default function RevenueLeakChecklist() {
   return (
     <div className="bg-gradient-to-b from-aureon-beige to-white">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Resources', path: '/resources' },
+          { name: 'The Revenue Leak Checklist', path: '/resources/revenue-leak-checklist' },
+        ])}
+      />
       <section className="mx-auto max-w-4xl px-4 pb-10 pt-20 text-center sm:px-6 lg:px-8">
         <span className="rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-aureon-ocean shadow-sm ring-1 ring-aureon-teal/30">
           Free checklist · for practice owners & managers
@@ -66,33 +102,25 @@ export default function RevenueLeakChecklist() {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 pb-20 sm:px-6 lg:px-8">
+        {/* The first stage is open to everyone (and to search engines); the rest unlocks with the form */}
+        <div className={card}>
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
+            <p className="text-gray-600">Tick off what you already do. Every unticked box is a place to start.</p>
+            <span className="rounded-full bg-aureon-teal/15 px-3 py-1 text-xs font-semibold text-aureon-ocean">Free preview · 5 of 15 checks</span>
+          </div>
+          <Stage stage={stages[0]} n={1} />
+        </div>
+
+        <h2 className="mb-6 mt-12 text-center text-2xl font-bold text-aureon-blue print:hidden">
+          Unlock the other 10 checks: during the visit, claims and payment
+        </h2>
         <LeadGate subject="checklist" resource="Revenue Leak Checklist">
-          <div className="rounded-3xl bg-white p-8 shadow-xl shadow-aureon-blue/5 ring-1 ring-aureon-blue/5 print:shadow-none print:ring-0">
-            <div className="mb-6 flex items-center justify-between gap-4">
-              <p className="text-gray-600">Tick off what you already do. Every unticked box is a place to start.</p>
+          <div className={`mt-0 ${card}`}>
+            <div className="mb-6 flex justify-end print:hidden">
               <PrintButton />
             </div>
-            {stages.map((stage, s) => (
-              <div key={stage.title} className="mt-8 first:mt-0">
-                <h2 className="text-xl font-bold text-aureon-blue">
-                  <span className="text-aureon-gold-deep">{s + 1}.</span> {stage.title}
-                </h2>
-                <ul className="mt-4 space-y-3">
-                  {stage.items.map(([check, help]) => (
-                    <li key={check} className="flex gap-3 rounded-xl border border-gray-100 p-4">
-                      <FaCheckSquare className="mt-1 shrink-0 text-aureon-teal" />
-                      <div>
-                        <div className="text-aureon-blue">{check}</div>
-                        {help && (
-                          <div className="mt-1 text-sm text-aureon-ocean">
-                            <span className="font-semibold">In AureonCare:</span> {help}
-                          </div>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {stages.slice(1).map((stage, s) => (
+              <Stage key={stage.title} stage={stage} n={s + 2} />
             ))}
           </div>
 

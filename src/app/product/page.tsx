@@ -1,3 +1,31 @@
+import { pageMetadata } from '@/lib/seo'
+import JsonLd, { breadcrumbSchema, organizationId } from '@/components/JsonLd'
+import { SITE_URL, audiences, features, site } from '@/lib/site'
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': `${SITE_URL}/product#software`,
+  name: site.name,
+  url: `${SITE_URL}/product`,
+  description: site.description,
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Healthcare practice management software',
+  operatingSystem: 'Web browser',
+  featureList: features,
+  audience: audiences.map((a) => ({ '@type': 'Audience', audienceType: a })),
+  availableLanguage: ['English', 'German', 'French', 'Spanish', 'Portuguese', 'Chinese', 'Arabic', 'Hindi'],
+  image: site.logo,
+  publisher: { '@id': organizationId },
+}
+
+export const metadata = pageMetadata({
+  title: 'EHR & Practice Management Software Features',
+  description:
+    'AureonCare features: EHR, scheduling, e-prescribing, telehealth, patient portal, claims and revenue cycle management, analytics, FHIR & HL7. Cloud or on-premises.',
+  path: '/product',
+})
+
 import {
   FaUserMd,
   FaCalendarAlt,
@@ -73,6 +101,8 @@ export default function Product() {
 
   return (
     <div>
+      <JsonLd data={softwareSchema} />
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Product', path: '/product' }])} />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-aureon-blue via-aureon-ocean to-aureon-blue py-20">
         <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-aureon-amber/20 blur-3xl" />

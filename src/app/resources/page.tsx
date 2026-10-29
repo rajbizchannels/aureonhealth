@@ -1,16 +1,19 @@
-import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import { FaLinkedin, FaYoutube } from 'react-icons/fa'
 import ResourceCards from '@/components/ResourceCards'
+import JsonLd, { breadcrumbSchema } from '@/components/JsonLd'
 
-export const metadata: Metadata = {
-  title: 'Free Resources for Practice Leaders | AureonCare',
+export const metadata = pageMetadata({
+  title: 'Free Resources for Practice Leaders',
   description:
     'Free tools for clinics: the Revenue Leak Checklist, a no-show cost calculator and a practice efficiency assessment.',
-}
+  path: '/resources',
+})
 
 export default function Resources() {
   return (
     <div>
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Resources', path: '/resources' }])} />
       <section className="bg-gradient-to-b from-aureon-beige to-white py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <span className="rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-aureon-ocean shadow-sm ring-1 ring-aureon-teal/30">

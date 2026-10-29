@@ -1,3 +1,12 @@
+import { pageMetadata } from '@/lib/seo'
+
+export const metadata = pageMetadata({
+  title: 'About Us',
+  description:
+    'AureonCare builds practice management software for clinics, created by healthcare professionals and technologists. Based in Lohr am Main, Bavaria, Germany.',
+  path: '/about',
+})
+
 import { FaEye, FaBullseye, FaHeart } from 'react-icons/fa'
 
 export default function About() {

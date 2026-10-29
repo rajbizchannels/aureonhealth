@@ -144,6 +144,9 @@ export default function HeroCarousel() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Audience tabs */}
+        <h1 className="mb-5 text-center text-base font-semibold text-aureon-ocean sm:text-lg">
+          All-in-one EHR, scheduling, telehealth &amp; billing software for clinics
+        </h1>
         <div className="mb-10 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Choose your role">
           {slides.map((s, i) => (
             <button
@@ -189,15 +192,9 @@ export default function HeroCarousel() {
                       {s.pillar}
                     </span>
                   </div>
-                  {i === 0 ? (
-                    <h1 className="mt-6 text-4xl font-bold leading-tight text-aureon-blue sm:text-5xl lg:text-[3.4rem]">
-                      {s.hook} <span className="text-gradient-aureon">{s.highlight}</span>
-                    </h1>
-                  ) : (
-                    <h2 className="mt-6 text-4xl font-bold leading-tight text-aureon-blue sm:text-5xl lg:text-[3.4rem]">
-                      {s.hook} <span className="text-gradient-aureon">{s.highlight}</span>
-                    </h2>
-                  )}
+                  <h2 className="mt-6 text-4xl font-bold leading-tight text-aureon-blue sm:text-5xl lg:text-[3.4rem]">
+                    {s.hook} <span className="text-gradient-aureon">{s.highlight}</span>
+                  </h2>
                   <p className="mx-auto mt-5 max-w-xl text-lg text-gray-600 lg:mx-0">{s.body}</p>
                   <ul className="mx-auto mt-5 inline-flex flex-col gap-2 text-left lg:mx-0">
                     {s.features.map((f) => (
