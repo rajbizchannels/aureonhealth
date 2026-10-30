@@ -13,21 +13,22 @@ import {
 
 // "One platform" visual for the product banner: the logo at the centre with
 // every product module arranged around it.
-const modules = [
-  { icon: FaUserMd, label: 'Patients' },
-  { icon: FaCalendarAlt, label: 'Scheduling' },
-  { icon: FaPrescriptionBottleAlt, label: 'e-Rx' },
-  { icon: FaFileMedical, label: 'EHR' },
-  { icon: FaDollarSign, label: 'Billing' },
-  { icon: FaChartLine, label: 'Analytics' },
-  { icon: FaShieldAlt, label: 'Compliance' },
-  { icon: FaMobileAlt, label: 'Mobile' },
-  { icon: FaCloud, label: 'Cloud / On-prem' },
+const moduleIcons = [
+  FaUserMd,
+  FaCalendarAlt,
+  FaPrescriptionBottleAlt,
+  FaFileMedical,
+  FaDollarSign,
+  FaChartLine,
+  FaShieldAlt,
+  FaMobileAlt,
+  FaCloud,
 ]
 
 const R = 40 // orbit radius, % of the box
 
-export default function PlatformHub() {
+export default function PlatformHub({ labels }: { labels: string[] }) {
+  const modules = moduleIcons.map((icon, i) => ({ icon, label: labels[i] }))
   const points = modules.map((_, i) => {
     const angle = (i / modules.length) * 2 * Math.PI - Math.PI / 2
     return { x: 50 + R * Math.cos(angle), y: 50 + R * Math.sin(angle) }

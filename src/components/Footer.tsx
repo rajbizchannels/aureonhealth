@@ -2,8 +2,13 @@ import Link from 'next/link'
 import Logo from './Logo'
 import NewsletterSignup from './NewsletterSignup'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { type Locale, getDictionary, localePath } from '@/i18n'
 
-export default function Footer() {
+export default function Footer({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale)
+  const f = t.footer
+  const href = (path: string) => localePath(locale, path)
+
   return (
     <footer className="bg-gradient-to-r from-aureon-ocean to-aureon-blue text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -13,10 +18,7 @@ export default function Footer() {
             <div className="mb-4">
               <Logo size={44} theme="dark" />
             </div>
-            <p className="text-gray-200 mb-4">
-              Transforming healthcare delivery with innovative solutions that empower
-              providers and improve patient outcomes.
-            </p>
+            <p className="text-gray-200 mb-4">{f.blurb}</p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/aureoncare" aria-label="Facebook" className="hover:text-aureon-amber transition-colors">
                 <FaFacebook size={24} />
@@ -35,41 +37,33 @@ export default function Footer() {
               </a>
             </div>
             <div className="mt-6 max-w-md">
-              <h4 className="mb-2 text-lg font-semibold text-aureon-amber">Stay in the loop</h4>
-              <NewsletterSignup />
+              <h4 className="mb-2 text-lg font-semibold text-aureon-amber">{f.newsletterTitle}</h4>
+              <NewsletterSignup t={t.newsletter} />
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-aureon-amber">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4 text-aureon-amber">{f.quickLinks}</h4>
             <ul className="space-y-2">
-              <li>
-                <Link href="/about" className="hover:text-aureon-amber transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/product" className="hover:text-aureon-amber transition-colors">
-                  Our Product
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources" className="hover:text-aureon-amber transition-colors">
-                  Free Resources
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-aureon-amber transition-colors">
-                  Contact
-                </Link>
-              </li>
+              {[
+                [href('/about'), f.about],
+                [href('/product'), f.product],
+                [href('/resources'), f.resources],
+                [href('/contact'), f.contact],
+              ].map(([to, label]) => (
+                <li key={to}>
+                  <Link href={to} className="hover:text-aureon-amber transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-aureon-amber">Contact</h4>
+            <h4 className="text-lg font-semibold mb-4 text-aureon-amber">{f.contactTitle}</h4>
             <ul className="space-y-2 text-gray-200 text-sm">
               <li>
                 <a href="mailto:info@aureoncare.tech" className="hover:text-aureon-amber transition-colors">
@@ -82,20 +76,23 @@ export default function Footer() {
                 </a>
               </li>
               <li>97816 Lohr am Main</li>
-              <li>Bavaria, Germany</li>
+              <li>{f.region}</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-aureon-teal/30 mt-8 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-gray-300 text-sm">
-            <p>&copy; {new Date().getFullYear()} AureonCare. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} AureonCare. {f.rights}
+            </p>
             <div className="flex gap-6">
-              <Link href="/privacy-policy" className="hover:text-aureon-amber transition-colors">
-                Privacy Policy
+              {/* Legal pages are English only */}
+              <Link href="/privacy-policy" hrefLang="en" className="hover:text-aureon-amber transition-colors">
+                {f.privacy}
               </Link>
-              <Link href="/terms-of-service" className="hover:text-aureon-amber transition-colors">
-                Terms of Service
+              <Link href="/terms-of-service" hrefLang="en" className="hover:text-aureon-amber transition-colors">
+                {f.terms}
               </Link>
             </div>
           </div>

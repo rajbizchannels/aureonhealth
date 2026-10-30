@@ -21,6 +21,14 @@ The website uses the gold and teal palette from the AureonCare logo
 - **Deep teal**: #0B4F4A (`aureon-blue`) for dark sections and headings
 - Gold-to-teal gradients throughout the site
 
+## Languages (English and German)
+
+- English pages live at the root (`/`, `/product`, ...) and German pages under `/de` (`/de`, `/de/product`, ...).
+- All page text is in `src/i18n/en.ts` and `src/i18n/de.ts`. `de.ts` is type-checked against `en.ts`, so the build fails if a German text is missing.
+- Page layouts are shared in `src/views/`; `src/app/(en)` and `src/app/(de)/de` only pick the language.
+- The privacy policy, terms of service and team page are English only.
+- Each page links to its translation with hreflang tags, and the sitemap lists both versions.
+
 ## Tech Stack
 
 - **Framework**: Next.js 14 (React)

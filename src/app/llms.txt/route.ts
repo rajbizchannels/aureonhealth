@@ -1,4 +1,7 @@
-import { SITE_URL, audiences, faqs, features, pages, site } from '@/lib/site'
+import { SITE_URL, audiences, features, pages, site } from '@/lib/site'
+import { en } from '@/i18n/en'
+import { de } from '@/i18n/de'
+import { localePath, translatedPaths } from '@/i18n/config'
 
 // llms.txt: a plain-text summary of the site for AI assistants and answer
 // engines (https://llmstxt.org). Built from the same facts as the pages.
@@ -30,7 +33,7 @@ ${pages.map((p) => `- [${p.title}](${SITE_URL}${p.path === '/' ? '' : p.path}): 
 
 ## Frequently asked questions
 
-${faqs.map(({ q, a }) => `### ${q}\n\n${a}`).join('\n\n')}
+${en.faqs.map(({ q, a }) => `### ${q}\n\n${a}`).join('\n\n')}
 
 ## Get in touch
 
@@ -39,6 +42,21 @@ ${faqs.map(({ q, a }) => `### ${q}\n\n${a}`).join('\n\n')}
 - Partnerships: ${SITE_URL}/contact?interest=partnership
 - LinkedIn: https://www.linkedin.com/company/aureoncare
 - YouTube: https://www.youtube.com/@aureoncare
+
+## Deutsch
+
+${de.site.description}
+
+### Seiten
+
+${pages
+  .filter((p) => translatedPaths.includes(p.path))
+  .map((p) => `- ${SITE_URL}${localePath('de', p.path)}`)
+  .join('\n')}
+
+### Häufig gestellte Fragen
+
+${de.faqs.map(({ q, a }) => `#### ${q}\n\n${a}`).join('\n\n')}
 `
   return new Response(body, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },

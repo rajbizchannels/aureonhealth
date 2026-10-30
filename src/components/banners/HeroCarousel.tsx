@@ -11,99 +11,36 @@ import {
   SchedulingVisual,
 } from './SlideVisuals'
 
-type Slide = {
-  id: string
-  audience: string
-  tab: string
-  pillar: 'Health' | 'Efficiency' | 'Growth'
-  hook: string
-  highlight: string
-  body: string
-  features: string[]
-  cta: { label: string; href: string }
-  secondary: { label: string; href: string }
-  Visual: () => JSX.Element
-}
+import type { Dictionary } from '@/i18n/en'
+import { type Locale, fill, localePath } from '@/i18n/config'
 
-// One slide per audience: who it is for, the hook, the features that answer
-// it, and the next step that fits that reader.
-const slides: Slide[] = [
-  {
-    id: 'owners',
-    tab: 'Owners & managers',
-    audience: 'For practice owners & managers',
-    pillar: 'Growth',
-    hook: 'Every denied claim is revenue',
-    highlight: 'you already earned.',
-    body: 'See exactly where money is stuck, from submission to payment, and act before it slips away.',
-    features: ['Claims lifecycle tracking', 'Denial follow-up & resubmission', 'Revenue & claims analytics'],
-    cta: { label: 'Get the free checklist', href: '/resources/revenue-leak-checklist' },
-    secondary: { label: 'Estimate no-show cost', href: '/resources/no-show-calculator' },
-    Visual: RevenueVisual,
-  },
-  {
-    id: 'clinicians',
-    tab: 'Clinicians',
-    audience: 'For doctors & clinicians',
-    pillar: 'Health',
-    hook: 'Less charting.',
-    highlight: 'More caring.',
-    body: 'Templates, the full patient history and e-prescribing in one view, so the visit stays about the patient.',
-    features: ['Electronic health records', 'e-Prescribing with interaction checks', 'Complete patient history at a glance'],
-    cta: { label: 'Book a 20-minute demo', href: '/contact?interest=demo' },
-    secondary: { label: 'See all features', href: '/product' },
-    Visual: ClinicianVisual,
-  },
-  {
-    id: 'front-desk',
-    tab: 'Front desk',
-    audience: 'For front desk & practice teams',
-    pillar: 'Efficiency',
-    hook: 'Fill every slot.',
-    highlight: 'Quiet the phones.',
-    body: 'Conflict-free booking, automated reminders and a waitlist that fills cancellations for you.',
-    features: ['Day, week & month calendars', 'Automated appointment reminders', 'Waitlist & double-booking prevention'],
-    cta: { label: 'Get a free assessment', href: '/contact?interest=assessment' },
-    secondary: { label: 'Estimate no-show cost', href: '/resources/no-show-calculator' },
-    Visual: SchedulingVisual,
-  },
-  {
-    id: 'patients',
-    tab: 'Patient experience',
-    audience: 'For patient-centred practices',
-    pillar: 'Health',
-    hook: 'Care that meets patients',
-    highlight: 'where they are.',
-    body: 'A patient portal and secure video visits keep patients connected between appointments, in their own language.',
-    features: ['Patient portal for records & prescriptions', 'Secure telehealth video visits', 'Available in 8 languages'],
-    cta: { label: 'See the patient experience', href: '/contact?interest=demo' },
-    secondary: { label: 'Explore the platform', href: '/product' },
-    Visual: PatientPortalVisual,
-  },
-  {
-    id: 'groups',
-    tab: 'Groups & IT',
-    audience: 'For healthcare groups & IT leads',
-    pillar: 'Growth',
-    hook: 'Scale across sites,',
-    highlight: 'not across risk.',
-    body: 'Connect clinics, labs and pharmacies on open standards, with access control and compliance built in.',
-    features: ['FHIR R4 & HL7 interoperability', 'Role-based access control', 'GDPR & HIPAA ready · cloud or on-premises'],
-    cta: { label: 'Talk to our solutions team', href: '/contact?interest=sales' },
-    secondary: { label: 'Partner with us', href: '/contact?interest=partnership' },
-    Visual: NetworkVisual,
-  },
-]
+// Illustration for each audience slide; the slide text lives in the dictionaries.
+const visuals = {
+  owners: RevenueVisual,
+  clinicians: ClinicianVisual,
+  'front-desk': SchedulingVisual,
+  patients: PatientPortalVisual,
+  groups: NetworkVisual,
+} as const
 
 const INTERVAL = 8000
 
-export default function HeroCarousel() {
+export default function HeroCarousel({
+  locale,
+  t,
+  v,
+}: {
+  locale: Locale
+  t: Dictionary['carousel']
+  v: Dictionary['visuals']
+}) {
+  const slides = t.slides
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   const [hovered, setHovered] = useState(false)
   const touchX = useRef<number | null>(null)
 
-  const go = useCallback((i: number) => setIndex((i + slides.length) % slides.length), [])
+  const go = useCallback((i: number) => setIndex((i + slides.length) % slides.length), [slides.length])
   const next = useCallback(() => go(index + 1), [go, index])
   const prev = useCallback(() => go(index - 1), [go, index])
 
@@ -122,7 +59,7 @@ export default function HeroCarousel() {
     <section
       className="relative overflow-hidden bg-gradient-to-b from-aureon-beige via-white to-white pb-28 pt-12 lg:pt-16"
       aria-roledescription="carousel"
-      aria-label="AureonCare for every role in your practice"
+      aria-label={t.ariaLabel}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setHovered(true)}
@@ -145,9 +82,9 @@ export default function HeroCarousel() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Audience tabs */}
         <h1 className="mb-5 text-center text-base font-semibold text-aureon-ocean sm:text-lg">
-          All-in-one EHR, scheduling, telehealth &amp; billing software for clinics
+          {t.h1}
         </h1>
-        <div className="mb-10 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Choose your role">
+        <div className="mb-10 flex flex-wrap justify-center gap-2" role="tablist" aria-label={t.tabsLabel}>
           {slides.map((s, i) => (
             <button
               key={s.id}
@@ -170,13 +107,14 @@ export default function HeroCarousel() {
         <div className="grid">
           {slides.map((s, i) => {
             const active = i === index
+            const Visual = visuals[s.id as keyof typeof visuals]
             return (
               <div
                 key={s.id}
                 id={`slide-${s.id}`}
                 role="tabpanel"
                 aria-roledescription="slide"
-                aria-label={`${i + 1} of ${slides.length}: ${s.audience}`}
+                aria-label={fill(t.slideLabel, { n: i + 1, total: slides.length, audience: s.audience })}
                 aria-hidden={!active}
                 {...(!active && { inert: '' as unknown as boolean })}
                 className={`col-start-1 row-start-1 grid items-center gap-14 transition-all duration-700 lg:grid-cols-2 ${
@@ -205,20 +143,20 @@ export default function HeroCarousel() {
                   </ul>
                   <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
                     <Link
-                      href={s.cta.href}
+                      href={localePath(locale, s.cta.href)}
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-aureon-amber px-7 py-4 font-semibold sm:whitespace-nowrap text-aureon-blue shadow-lg shadow-aureon-amber/30 transition-all duration-300 hover:bg-aureon-gold"
                     >
                       {s.cta.label} <FaArrowRight />
                     </Link>
                     <Link
-                      href={s.secondary.href}
+                      href={localePath(locale, s.secondary.href)}
                       className="inline-flex items-center justify-center rounded-full border-2 border-aureon-ocean px-7 py-4 font-semibold sm:whitespace-nowrap text-aureon-ocean transition-all duration-300 hover:bg-aureon-ocean hover:text-white"
                     >
                       {s.secondary.label}
                     </Link>
                   </div>
                 </div>
-                <s.Visual />
+                <Visual v={v} />
               </div>
             )
           })}
@@ -226,7 +164,7 @@ export default function HeroCarousel() {
 
         {/* Controls */}
         <div className="mt-14 flex items-center justify-center gap-4">
-          <button onClick={prev} aria-label="Previous slide" className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-aureon-ocean shadow ring-1 ring-aureon-teal/30 hover:bg-aureon-beige">
+          <button onClick={prev} aria-label={t.prev} className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-aureon-ocean shadow ring-1 ring-aureon-teal/30 hover:bg-aureon-beige">
             <FaChevronLeft />
           </button>
           <div className="flex gap-2">
@@ -234,18 +172,18 @@ export default function HeroCarousel() {
               <button
                 key={s.id}
                 onClick={() => go(i)}
-                aria-label={`Go to slide ${i + 1}`}
+                aria-label={fill(t.goTo, { n: i + 1 })}
                 aria-current={i === index}
                 className={`h-2.5 rounded-full transition-all ${i === index ? 'w-8 bg-aureon-gold' : 'w-2.5 bg-aureon-teal/40 hover:bg-aureon-teal'}`}
               />
             ))}
           </div>
-          <button onClick={next} aria-label="Next slide" className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-aureon-ocean shadow ring-1 ring-aureon-teal/30 hover:bg-aureon-beige">
+          <button onClick={next} aria-label={t.next} className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-aureon-ocean shadow ring-1 ring-aureon-teal/30 hover:bg-aureon-beige">
             <FaChevronRight />
           </button>
           <button
             onClick={() => setPlaying((p) => !p)}
-            aria-label={playing ? 'Pause carousel' : 'Play carousel'}
+            aria-label={playing ? t.pause : t.play}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-aureon-ocean shadow ring-1 ring-aureon-teal/30 hover:bg-aureon-beige"
           >
             {playing ? <FaPause /> : <FaPlay />}
