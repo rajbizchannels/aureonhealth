@@ -22,7 +22,7 @@ const SUBJECT_LABELS: Record<string, string> = {
   partnership: 'Partnership',
   checklist: 'Revenue Leak Checklist download',
   calculator: 'No-show calculator follow-up',
-  newsletter: 'Newsletter signup',
+  newsletter: 'Newsletter signup (LinkedIn)',
   other: 'Other',
 }
 

@@ -41,6 +41,7 @@ ${en.faqs.map(({ q, a }) => `### ${q}\n\n${a}`).join('\n\n')}
 - Free practice efficiency assessment: ${SITE_URL}/contact?interest=assessment
 - Partnerships: ${SITE_URL}/contact?interest=partnership
 - LinkedIn: https://www.linkedin.com/company/aureoncare
+- Newsletter (AureonCare Insights on LinkedIn): ${site.newsletterUrl}
 - YouTube: https://www.youtube.com/@aureoncare
 
 ## Deutsch

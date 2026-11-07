@@ -75,13 +75,15 @@ export const en = {
   },
 
   newsletter: {
-    label: 'Practice insights, product news and event invites. Monthly, no spam.',
+    label: 'AureonCare Insights on LinkedIn: practice tips, product news and event invites.',
+    note: 'We keep your email to stay in touch. You subscribe to the newsletter itself on LinkedIn.',
     placeholder: 'you@clinic.com',
     subscribe: 'Subscribe',
-    sending: 'Sending…',
-    thanks: 'Thanks! You’re on the list.',
-    message: 'Please add me to the AureonCare practice insights newsletter.',
-    source: 'Footer newsletter signup',
+    sending: 'Opening LinkedIn…',
+    thanks: 'Thanks! Finish subscribing on LinkedIn in the new tab.',
+    openAgain: 'Open the newsletter on LinkedIn',
+    message: 'Subscribing to the AureonCare Insights newsletter on LinkedIn.',
+    source: 'Footer newsletter signup (LinkedIn)',
     error: 'Something went wrong. Please try again.',
   },
 

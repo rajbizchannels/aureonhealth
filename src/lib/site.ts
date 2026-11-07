@@ -21,6 +21,8 @@ export const site = {
     country: 'DE',
   },
   logo: `${SITE_URL}/logos/aureoncare-full-logo.png`,
+  // AureonCare Insights newsletter; LinkedIn handles the actual subscription.
+  newsletterUrl: 'https://www.linkedin.com/newsletters/aureoncare-insights-7438224014591938560',
   sameAs: [
     'https://www.linkedin.com/company/aureoncare',
     'https://www.facebook.com/aureoncare',
