@@ -1,4 +1,5 @@
 import type { Dictionary } from './en'
+import { site } from '@/lib/site'
 
 // Deutsche Texte. Formelle Anrede („Sie“).
 // Bewusst vermieden: „E-Rezept“ und „ePA“ (in Deutschland an die
@@ -139,7 +140,7 @@ export const de: Dictionary = {
         highlight: 'Mehr Zeit für Patienten.',
         body: 'Vorlagen, die komplette Krankengeschichte und Verordnungen in einer Ansicht, damit sich der Termin um den Menschen dreht.',
         features: ['Digitale Patientenakte', 'Verordnungen mit Wechselwirkungsprüfung', 'Krankengeschichte auf einen Blick'],
-        cta: { label: '20-Minuten-Demo buchen', href: '/contact?interest=demo' },
+        cta: { label: '20-Minuten-Demo buchen', href: site.bookingUrl },
         secondary: { label: 'Alle Funktionen', href: '/product' },
       },
       {
@@ -163,7 +164,7 @@ export const de: Dictionary = {
         highlight: 'dort abholt, wo sie sind.',
         body: 'Patientenportal und sichere Videosprechstunde halten Patienten zwischen den Terminen verbunden, in ihrer eigenen Sprache.',
         features: ['Patientenportal für Befunde & Verordnungen', 'Sichere Videosprechstunde', 'Verfügbar in 8 Sprachen'],
-        cta: { label: 'Patientenerlebnis ansehen', href: '/contact?interest=demo' },
+        cta: { label: 'Patientenerlebnis ansehen', href: site.bookingUrl },
         secondary: { label: 'Plattform entdecken', href: '/product' },
       },
       {

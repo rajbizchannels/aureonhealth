@@ -1,3 +1,5 @@
+import { site } from '@/lib/site'
+
 // English site text. de.ts must have exactly the same shape.
 
 export const en = {
@@ -135,7 +137,7 @@ export const en = {
         highlight: 'More caring.',
         body: 'Templates, the full patient history and e-prescribing in one view, so the visit stays about the patient.',
         features: ['Electronic health records', 'e-Prescribing with interaction checks', 'Complete patient history at a glance'],
-        cta: { label: 'Book a 20-minute demo', href: '/contact?interest=demo' },
+        cta: { label: 'Book a 20-minute demo', href: site.bookingUrl },
         secondary: { label: 'See all features', href: '/product' },
       },
       {
@@ -159,7 +161,7 @@ export const en = {
         highlight: 'where they are.',
         body: 'A patient portal and secure video visits keep patients connected between appointments, in their own language.',
         features: ['Patient portal for records & prescriptions', 'Secure telehealth video visits', 'Available in 8 languages'],
-        cta: { label: 'See the patient experience', href: '/contact?interest=demo' },
+        cta: { label: 'See the patient experience', href: site.bookingUrl },
         secondary: { label: 'Explore the platform', href: '/product' },
       },
       {
