@@ -79,13 +79,15 @@ export const de: Dictionary = {
   },
 
   newsletter: {
-    label: 'Praxis-Tipps, Produktneuigkeiten und Veranstaltungseinladungen. Einmal im Monat, kein Spam.',
+    label: 'AureonCare Insights auf LinkedIn: Praxis-Tipps, Produktneuigkeiten und Veranstaltungseinladungen.',
+    note: 'Wir speichern Ihre E-Mail-Adresse, um mit Ihnen in Kontakt zu bleiben. Den Newsletter selbst abonnieren Sie auf LinkedIn.',
     placeholder: 'sie@praxis.de',
-    subscribe: 'Anmelden',
-    sending: 'Wird gesendet …',
-    thanks: 'Vielen Dank! Sie sind angemeldet.',
-    message: 'Bitte nehmen Sie mich in den AureonCare-Newsletter auf.',
-    source: 'Newsletter-Anmeldung Footer (DE)',
+    subscribe: 'Abonnieren',
+    sending: 'LinkedIn wird geöffnet …',
+    thanks: 'Vielen Dank! Schließen Sie das Abonnement im neuen LinkedIn-Tab ab.',
+    openAgain: 'Newsletter auf LinkedIn öffnen',
+    message: 'Abonniert den AureonCare-Insights-Newsletter auf LinkedIn.',
+    source: 'Newsletter-Anmeldung Footer (DE, LinkedIn)',
     error: 'Das hat leider nicht geklappt. Bitte versuchen Sie es erneut.',
   },
 
