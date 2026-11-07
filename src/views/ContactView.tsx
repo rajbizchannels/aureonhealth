@@ -19,7 +19,8 @@ import {
 } from 'react-icons/fa'
 
 import type { Dictionary } from '@/i18n/en'
-import { type Locale, localePath } from '@/i18n/config'
+import { type Locale } from '@/i18n/config'
+import { site } from '@/lib/site'
 
 // Icons for the ways to connect, in the same order as the dictionary.
 const pathIcons = [FaVideo, FaStethoscope, FaBriefcase, FaHandshake, FaLifeRing]
@@ -50,10 +51,9 @@ export default function ContactView({ locale, t }: { locale: Locale; t: Dictiona
     }
   }, [])
 
-  const choosePath = (id: string) => {
-    setFormData((f) => ({ ...f, subject: id }))
-    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  // The cards open the booking calendar; the matching subject is also
+  // pre-selected in case the visitor comes back to write instead.
+  const choosePath = (id: string) => setFormData((f) => ({ ...f, subject: id }))
 
   const placeholder =
     paths.find((p) => p.id === formData.subject)?.placeholder || t.messagePlaceholder
@@ -121,9 +121,11 @@ export default function ContactView({ locale, t }: { locale: Locale; t: Dictiona
           </p>
           <div className="mt-12 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-5">
             {paths.map(({ id, icon: Icon, title, text }) => (
-              <button
+              <a
                 key={id}
-                type="button"
+                href={site.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => choosePath(id)}
                 className={`rounded-2xl bg-white p-5 text-left shadow-lg shadow-aureon-blue/5 ring-1 transition-all hover:-translate-y-1 hover:shadow-xl ${
                   formData.subject === id ? 'ring-2 ring-aureon-amber' : 'ring-aureon-blue/5'
@@ -134,9 +136,10 @@ export default function ContactView({ locale, t }: { locale: Locale; t: Dictiona
                 </span>
                 <span className="mt-3 block font-semibold text-aureon-blue">{title}</span>
                 <span className="mt-1 block text-sm text-gray-600">{text}</span>
-              </button>
+              </a>
             ))}
           </div>
+          <p className="mt-6 text-sm text-gray-600">{t.bookingNote}</p>
         </div>
       </section>
 
@@ -445,7 +448,9 @@ export default function ContactView({ locale, t }: { locale: Locale; t: Dictiona
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={localePath(locale, '/product')}
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-aureon-amber text-aureon-blue px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-aureon-ocean transition-all duration-300"
             >
               {t.ctaPrimary}

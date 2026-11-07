@@ -37,7 +37,7 @@ ${en.faqs.map(({ q, a }) => `### ${q}\n\n${a}`).join('\n\n')}
 
 ## Get in touch
 
-- Book a demo: ${SITE_URL}/contact?interest=demo
+- Book a demo: ${site.bookingUrl}
 - Free practice efficiency assessment: ${SITE_URL}/contact?interest=assessment
 - Partnerships: ${SITE_URL}/contact?interest=partnership
 - LinkedIn: https://www.linkedin.com/company/aureoncare

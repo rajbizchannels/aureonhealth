@@ -15,7 +15,8 @@ import HeroCarousel from '@/components/banners/HeroCarousel'
 import FeatureHighlights from '@/components/FeatureHighlights'
 import ResourceCards from '@/components/ResourceCards'
 import Faq from '@/components/Faq'
-import { type Locale, fill, getDictionary, localePath } from '@/i18n'
+import { type Locale, fill, getDictionary } from '@/i18n'
+import { site } from '@/lib/site'
 
 const pillarIcons = [FaHeartbeat, FaBolt, FaChartLine]
 const stepIcons = [FaComments, FaVideo, FaRocket]
@@ -115,7 +116,9 @@ export default function HomeView({ locale }: { locale: Locale }) {
           <h2 className="text-4xl font-bold text-white md:text-5xl">{h.connect.title}</h2>
           <p className="mx-auto mt-5 max-w-2xl text-xl text-gray-200">{h.connect.sub}</p>
           <Link
-            href={localePath(locale, '/contact?interest=demo')}
+            href={site.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-aureon-amber px-10 py-4 text-lg font-semibold text-aureon-blue shadow-lg transition-all duration-300 hover:bg-white"
           >
             {h.connect.cta} <FaArrowRight />

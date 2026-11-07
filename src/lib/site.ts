@@ -22,6 +22,8 @@ export const site = {
   },
   logo: `${SITE_URL}/logos/aureoncare-full-logo.png`,
   // AureonCare Insights newsletter; LinkedIn handles the actual subscription.
+  // Google Calendar booking page used by the Contact page buttons.
+  bookingUrl: 'https://calendar.app.google/GZvUpMgM9w8poYh5A',
   newsletterUrl: 'https://www.linkedin.com/newsletters/aureoncare-insights-7438224014591938560',
   sameAs: [
     'https://www.linkedin.com/company/aureoncare',

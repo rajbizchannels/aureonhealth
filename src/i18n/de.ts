@@ -1,4 +1,5 @@
 import type { Dictionary } from './en'
+import { site } from '@/lib/site'
 
 // Deutsche Texte. Formelle Anrede („Sie“).
 // Bewusst vermieden: „E-Rezept“ und „ePA“ (in Deutschland an die
@@ -139,7 +140,7 @@ export const de: Dictionary = {
         highlight: 'Mehr Zeit für Patienten.',
         body: 'Vorlagen, die komplette Krankengeschichte und Verordnungen in einer Ansicht, damit sich der Termin um den Menschen dreht.',
         features: ['Digitale Patientenakte', 'Verordnungen mit Wechselwirkungsprüfung', 'Krankengeschichte auf einen Blick'],
-        cta: { label: '20-Minuten-Demo buchen', href: '/contact?interest=demo' },
+        cta: { label: '20-Minuten-Demo buchen', href: site.bookingUrl },
         secondary: { label: 'Alle Funktionen', href: '/product' },
       },
       {
@@ -163,7 +164,7 @@ export const de: Dictionary = {
         highlight: 'dort abholt, wo sie sind.',
         body: 'Patientenportal und sichere Videosprechstunde halten Patienten zwischen den Terminen verbunden, in ihrer eigenen Sprache.',
         features: ['Patientenportal für Befunde & Verordnungen', 'Sichere Videosprechstunde', 'Verfügbar in 8 Sprachen'],
-        cta: { label: 'Patientenerlebnis ansehen', href: '/contact?interest=demo' },
+        cta: { label: 'Patientenerlebnis ansehen', href: site.bookingUrl },
         secondary: { label: 'Plattform entdecken', href: '/product' },
       },
       {
@@ -516,6 +517,7 @@ export const de: Dictionary = {
     titleStart: 'Lassen Sie uns über',
     titleHighlight: 'Ihre Praxis sprechen',
     sub: 'Ob Sie sich erst informieren, eine Demo sehen oder mit uns zusammenarbeiten möchten: Wählen Sie den Weg, der zu Ihnen passt.',
+    bookingNote: 'Jede Option öffnet unseren Buchungskalender in einem neuen Tab. Lieber schreiben? Nutzen Sie das Formular unten.',
     paths: [
       { id: 'demo', title: 'Demo buchen', text: '20 Minuten, zugeschnitten auf Ihr Fachgebiet', placeholder: 'Ihr Fachgebiet, die Teamgröße und was Sie in der Demo sehen möchten …' },
       { id: 'assessment', title: 'Kostenlose Analyse', text: 'Ein praktischer Blick auf Ihre Abläufe', placeholder: 'Wo verliert Ihre Praxis heute die meiste Zeit oder den meisten Umsatz?' },
@@ -565,7 +567,7 @@ export const de: Dictionary = {
     source: 'Kontaktseite (DE)',
     ctaTitle: 'Bereit für den Start?',
     ctaSub: 'Vereinbaren Sie noch heute eine Demo und sehen Sie, wie AureonCare Ihre Praxis voranbringt',
-    ctaPrimary: 'Mehr erfahren',
+    ctaPrimary: 'Termin buchen',
     ctaSecondary: 'Jetzt anrufen',
   },
 

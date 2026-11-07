@@ -64,7 +64,9 @@ export default function ProductView({ locale }: { locale: Locale }) {
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-xl text-white/85 lg:mx-0">{p.sub}</p>
             <a
-              href={href('/contact?interest=demo')}
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-block rounded-full bg-aureon-amber px-10 py-4 text-lg font-semibold text-aureon-blue shadow-lg transition-all duration-300 hover:bg-white"
             >
               {p.demo}
@@ -145,7 +147,9 @@ export default function ProductView({ locale }: { locale: Locale }) {
           <p className="text-xl text-gray-200 mb-8">{p.ctaSub}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={href('/contact?interest=demo')}
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-aureon-amber text-aureon-blue px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-aureon-ocean transition-all duration-300 shadow-lg"
             >
               {p.ctaPrimary}

@@ -12,7 +12,7 @@ import {
 } from './SlideVisuals'
 
 import type { Dictionary } from '@/i18n/en'
-import { type Locale, fill, localePath } from '@/i18n/config'
+import { type Locale, externalProps, fill, localePath } from '@/i18n/config'
 
 // Illustration for each audience slide; the slide text lives in the dictionaries.
 const visuals = {
@@ -144,12 +144,14 @@ export default function HeroCarousel({
                   <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
                     <Link
                       href={localePath(locale, s.cta.href)}
+                      {...externalProps(s.cta.href)}
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-aureon-amber px-7 py-4 font-semibold sm:whitespace-nowrap text-aureon-blue shadow-lg shadow-aureon-amber/30 transition-all duration-300 hover:bg-aureon-gold"
                     >
                       {s.cta.label} <FaArrowRight />
                     </Link>
                     <Link
                       href={localePath(locale, s.secondary.href)}
+                      {...externalProps(s.secondary.href)}
                       className="inline-flex items-center justify-center rounded-full border-2 border-aureon-ocean px-7 py-4 font-semibold sm:whitespace-nowrap text-aureon-ocean transition-all duration-300 hover:bg-aureon-ocean hover:text-white"
                     >
                       {s.secondary.label}
