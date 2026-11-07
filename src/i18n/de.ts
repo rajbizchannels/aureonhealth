@@ -516,6 +516,7 @@ export const de: Dictionary = {
     titleStart: 'Lassen Sie uns über',
     titleHighlight: 'Ihre Praxis sprechen',
     sub: 'Ob Sie sich erst informieren, eine Demo sehen oder mit uns zusammenarbeiten möchten: Wählen Sie den Weg, der zu Ihnen passt.',
+    bookingNote: 'Jede Option öffnet unseren Buchungskalender in einem neuen Tab. Lieber schreiben? Nutzen Sie das Formular unten.',
     paths: [
       { id: 'demo', title: 'Demo buchen', text: '20 Minuten, zugeschnitten auf Ihr Fachgebiet', placeholder: 'Ihr Fachgebiet, die Teamgröße und was Sie in der Demo sehen möchten …' },
       { id: 'assessment', title: 'Kostenlose Analyse', text: 'Ein praktischer Blick auf Ihre Abläufe', placeholder: 'Wo verliert Ihre Praxis heute die meiste Zeit oder den meisten Umsatz?' },
@@ -565,7 +566,7 @@ export const de: Dictionary = {
     source: 'Kontaktseite (DE)',
     ctaTitle: 'Bereit für den Start?',
     ctaSub: 'Vereinbaren Sie noch heute eine Demo und sehen Sie, wie AureonCare Ihre Praxis voranbringt',
-    ctaPrimary: 'Mehr erfahren',
+    ctaPrimary: 'Termin buchen',
     ctaSecondary: 'Jetzt anrufen',
   },
 

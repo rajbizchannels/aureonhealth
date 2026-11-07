@@ -512,6 +512,7 @@ export const en = {
     titleStart: 'Let’s talk about',
     titleHighlight: 'your practice',
     sub: 'Whether you’re exploring options, ready for a demo or want to partner with us, pick the way that suits you.',
+    bookingNote: 'Each option opens our booking calendar in a new tab. Prefer to write? Use the form below.',
     paths: [
       { id: 'demo', title: 'Book a demo', text: '20 minutes, tailored to your specialty', placeholder: 'Your specialty, team size and what you would like to see in the demo…' },
       { id: 'assessment', title: 'Free assessment', text: 'A practical review of your workflow', placeholder: 'Where does your practice lose the most time or revenue today?' },
@@ -561,7 +562,7 @@ export const en = {
     source: 'Contact page',
     ctaTitle: 'Ready to Get Started?',
     ctaSub: 'Schedule a demo today and see how AureonCare can transform your practice',
-    ctaPrimary: 'Learn More',
+    ctaPrimary: 'Book a meeting',
     ctaSecondary: 'Call Us Now',
   },
 
